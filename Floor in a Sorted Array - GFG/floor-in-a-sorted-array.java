@@ -43,6 +43,8 @@ class Solution{
         }
         
         int start = 0, end = n-1, res = -1;
+        if(arr[0]>x)return -1;
+        if(arr[n-1]<x)return n-1;
         while(start<=end){
             int mid = start+(end-start)/2;
             if(arr[mid]>x){
