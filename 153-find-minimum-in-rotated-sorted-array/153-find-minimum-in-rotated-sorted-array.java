@@ -1,29 +1,26 @@
 class Solution {
-    
-    //Explanation
-    //1. whenever mid element < high element .. that time our pivot will lie on the left side.. (obviously)
-    //2. whenever mid element > high element .. that time our pivot will lie on the right side.. 
-    //3. at last the lo==hi break and return the pivot element.
-    
-    
-    public int findMin(int[] nums) {
-        int lo =0;
-        int hi =nums.length-1;
+   public int findMin(int nums[]){
+        int start = 0;
+        int end = nums.length-1;
+       
+       if(nums.length==1){
+           return nums[0];
+       }
         
-        //we will not consider lo==hi ..consider [1].. here lo==hi.. so in this case lo or hi itself is the pivot element.
-        while(lo<hi){
-            int mid = lo+(hi-lo)/2;
-            if(nums[mid]<nums[hi]){
-                //if nums[mid]<nums[hi].. pivot will be on the left
-                hi=mid;
+        while(start<=end){
+            int mid = start+(end-start)/2;
+            int next = (mid+1)%nums.length;
+            int prev = (mid+nums.length-1)%nums.length;
+            if(nums[mid]<nums[next]&&nums[mid]<nums[prev]){
+                return nums[mid];
+            }
+            else if(nums[mid]>nums[end]){
+                start=mid+1;
             }
             else{
-                 //if nums[mid]>nums[hi].. pivot will be on the right
-                lo=mid+1;
+                end=mid-1;
             }
         }
-        
-        //at last the loop will break when lo==hi so return anything num[lo] or nums[hi].. it contains the pivot element.!!
-        return nums[hi];
+        return -1;
     }
 }
