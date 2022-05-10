@@ -1,8 +1,7 @@
 class Solution {
     public int search(int[] nums, int target) {
         if(nums.length==1){
-            if(target==nums[0])return 0;
-            else return -1;
+            return target==nums[0]?0:-1;
         }
         int ans = findmin(nums);
         int ans1 = search(nums,target,0,ans-1);
