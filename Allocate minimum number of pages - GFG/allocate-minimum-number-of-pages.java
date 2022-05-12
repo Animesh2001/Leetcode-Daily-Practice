@@ -60,20 +60,16 @@ class Solution
     public static boolean isValid(int mid,int []A,int M){
         int student=1,sum=0;
         for(int i=0;i<A.length;i++){
-            if(sum+A[i]<=mid){
-                sum+=A[i];
-            }
-            else{
-                student++;
-                //---------------------------
-                //ALERT- In this if condition suppose mid=5 and a[i]=30 you need to return false for that
-                //-----------------------------
-                if(student>M){
-                    return false;
-                }
+             sum+=A[i];
+            if(sum>mid){
                 sum=A[i];
+                student++;
+            }
+            if(student>M){
+                return false;
             }
         }
+        
         return true;
     }
 }
