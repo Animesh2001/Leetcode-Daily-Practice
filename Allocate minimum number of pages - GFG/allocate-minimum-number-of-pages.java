@@ -42,7 +42,10 @@ class Solution
         for(int i=0;i<A.length;i++){
             end+=A[i];
         }
-        int start = 0;
+        int start=Integer.MIN_VALUE;
+        for(int i:A){
+            start=Math.max(start,i);
+        }
         while(start<=end){
             int mid= start+(end-start)/2;
             if(isValid(mid,A,M)){
@@ -65,7 +68,7 @@ class Solution
                 //---------------------------
                 //ALERT- In this if condition suppose mid=5 and a[i]=30 you need to return false for that
                 //-----------------------------
-                if(student>M||A[i]>mid){
+                if(student>M){
                     return false;
                 }
                 sum=A[i];
