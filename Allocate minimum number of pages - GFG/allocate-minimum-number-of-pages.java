@@ -62,6 +62,9 @@ class Solution
             }
             else{
                 student++;
+                //---------------------------
+                //ALERT- In this if condition suppose mid=5 and a[i]=30 you need to return false for that
+                //-----------------------------
                 if(student>M||A[i]>mid){
                     return false;
                 }
