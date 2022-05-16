@@ -45,6 +45,9 @@ class Solution
             this.start=start;
             this.end=end;
         }
+        
+        //ALERT-------------------------
+        //Compare to function Pair class jaha define kiye usme comparavble implement krke hi banana h
         public int compareTo(Pair p){
             return this.end-p.end;
         }
