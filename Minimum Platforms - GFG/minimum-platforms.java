@@ -52,7 +52,7 @@ class Solution
         int platform=0;
         int i=0,j=0;
         int maxi = Integer.MIN_VALUE;
-        while(i<arr.length){
+        while(i<arr.length&&j<arr.length){
             if(arr[i]<=dep[j]){
                 platform++;
                 i++;
