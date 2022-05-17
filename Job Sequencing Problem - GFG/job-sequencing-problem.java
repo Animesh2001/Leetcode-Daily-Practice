@@ -47,9 +47,7 @@ class Solution
     int[] JobScheduling(Job arr[], int n)
     {
         // Your code here
-        Arrays.sort(arr,(o1,o2)->{
-           return o2.profit-o1.profit; 
-        });
+        Arrays.sort(arr,(o1,o2)->(o2.profit-o1.profit));
         
         int maxi = Integer.MIN_VALUE;
         for(int i=0;i<arr.length;i++){
