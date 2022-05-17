@@ -63,7 +63,7 @@ class Solution
             Pair p = new Pair(start[i],end[i]);
             arr[i]=p;
         }
-        Arrays.sort(arr,(o1,o2)->{return o1.end-o2.end;});
+        Arrays.sort(arr,(o1,o2)->(o1.end-o2.end));
         int j=0;
         int count=1;
         for(int i=1;i<n;i++) {
