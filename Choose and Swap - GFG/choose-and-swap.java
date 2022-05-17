@@ -33,13 +33,21 @@ class GFG
 
 class Solution{
     
+    
     String chooseandswap(String A){
         // Code Here
+        
+        //ALERT------------------
+        //These is the way to write set which use to store in natural order
         SortedSet<Character> set = new TreeSet<>();
+        
+        //ALERT------------------
+        //These is the way to convert a string to character array
        char ch[]= A.toCharArray();
         for(int i=0;i<ch.length;i++){
             set.add(ch[i]);
         }
+        
         for(int i=0;i<ch.length;i++){
             set.remove(ch[i]);
             if(set.size()==0)break;
@@ -57,6 +65,8 @@ class Solution{
                 break;
             }
         }
+        
+        //These is the way to convert char array to string
         return String.valueOf(ch);
         
     }
