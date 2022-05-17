@@ -54,7 +54,7 @@ class Solution {
         Arrays.sort(pair);
         int count=0;
         
-        for(int i=0;i<pair.length&&k>0;i++){
+        for(int i=0;i<pair.length;i++){
             int amount =pair[i].price*pair[i].day;
             if(amount<=k){
                 k=k-amount;
@@ -67,7 +67,8 @@ class Solution {
                 // }
                 // break;
                 count+=k/pair[i].price;
-                break;
+                k=k-(pair[i].price)*(k/pair[i].price);
+
             }
         }
         return count;
