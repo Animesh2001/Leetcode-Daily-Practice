@@ -46,8 +46,25 @@ class Solution
     //Function to find the maximum profit and the number of jobs done.
     int[] JobScheduling(Job arr[], int n)
     {
+        
+        // Explanation
+        // 1. sort the Job array according to profit in descending order
+        // 2. make an array with max deadline + 1
+        // 3. complete the deadline work at last so that more work can be done before that
+        // 4. watch abdul bari's video once.
+        
+        
         // Your code here
+        
+        // Arrays.sort(arr,(o1,o2)->{
+        //   return o2.profit-o1.profit; 
+        // });
+        
+        //OR
+        //ALERT------------------------
+        //In short
         Arrays.sort(arr,(o1,o2)->(o2.profit-o1.profit));
+        
         
         int maxi = Integer.MIN_VALUE;
         for(int i=0;i<arr.length;i++){
