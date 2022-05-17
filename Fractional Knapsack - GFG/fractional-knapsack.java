@@ -45,7 +45,6 @@ class Solution
 {
     class itemComparator implements Comparator<Item>
 {
-    @Override
     public int compare(Item a, Item b) 
     {
         double r1 = (double)(a.value) / (double)(a.weight); 
