@@ -61,10 +61,12 @@ class Solution {
                 count+=pair[i].day;
             }
             else{
-                while(k-pair[i].price>=0){
-                    k-=pair[i].price;
-                    count++;
-                }
+                // while(k-pair[i].price>=0){
+                //     k-=pair[i].price;
+                //     count++;
+                // }
+                // break;
+                count+=k/pair[i].price;
                 break;
             }
         }
