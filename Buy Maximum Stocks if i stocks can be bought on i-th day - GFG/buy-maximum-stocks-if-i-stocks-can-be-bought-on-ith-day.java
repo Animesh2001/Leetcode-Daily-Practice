@@ -68,7 +68,6 @@ class Solution {
                 // break;
                 count+=k/pair[i].price;
                 k=k-(pair[i].price)*(k/pair[i].price);
-
             }
         }
         return count;
