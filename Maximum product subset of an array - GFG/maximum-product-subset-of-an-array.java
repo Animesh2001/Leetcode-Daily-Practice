@@ -65,15 +65,16 @@ class Solution {
         
         for(int i=0;i<arr.length;i++){
             if(arr[i]<0){
+                product=(product*arr[i])%M;
                 largest_negative=Math.max(largest_negative,arr[i]);
                 count_odd++;
             }
             else if(arr[i]==0){
                 count_zero++;
-                continue;
             }
-            
-            product=(product*arr[i])%M;
+            else{
+                product=(product*arr[i])%M;
+            }
             
         }
         if(count_zero==n){
