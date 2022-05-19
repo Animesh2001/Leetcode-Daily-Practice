@@ -79,7 +79,7 @@ class Solution {
         
         int min =Math.min(sum1,Math.min(sum2,sum3));
         
-        while((sum1!=sum2||sum2!=sum3||sum3!=sum1)&&i<S1.length&&j<S2.length&&k<S3.length){
+        while((sum1!=sum2||sum2!=sum3)&&i<S1.length&&j<S2.length&&k<S3.length){
             while(sum1>min&&i<S1.length){
                 sum1-=S1[i];
                 i++;
@@ -94,7 +94,7 @@ class Solution {
             }
             min=Math.min(sum1,Math.min(sum2,sum3));
         }
-        if(sum1==sum2&&sum2==sum3&&sum3==sum1){
+        if(sum1==sum2&&sum2==sum3){
             return min;
         }
         return 0;
