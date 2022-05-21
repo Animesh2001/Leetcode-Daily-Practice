@@ -43,56 +43,34 @@ class GfG {
 
 class Solution
 {
+    public static 
+    
     //Function to find the maximum profit and the number of jobs done.
     int[] JobScheduling(Job arr[], int n)
     {
-        
-        // Explanation
-        // 1. sort the Job array according to profit in descending order
-        // 2. make an array with max deadline + 1
-        // 3. complete the deadline work at last so that more work can be done before that
-        // 4. watch abdul bari's video once.
-        
-        
         // Your code here
-        
-        // Arrays.sort(arr,(o1,o2)->{
-        //   return o2.profit-o1.profit; 
-        // });
-        
-        //OR
-        //ALERT------------------------
-        //In short
+        int max = Integer.MIN_VALUE;
+        for(int i=0;i<arr.length;i++){
+            max=Math.max(arr[i].deadline,max);
+        }
+        int deadline[]=new int[max+1];
+        for(int i=0;i<deadline.length;i++){
+            deadline[i]=-1;
+        }
         Arrays.sort(arr,(o1,o2)->(o2.profit-o1.profit));
-        
-        
-        int maxi = Integer.MIN_VALUE;
+        int rupees=0,count=0;
         for(int i=0;i<arr.length;i++){
-            maxi=Math.max(maxi,arr[i].deadline);
-        }
-        
-        int result[]=new int[maxi+1];
-        
-        for(int i=0;i<=maxi;i++){
-            result[i]=-1;
-        }
-        int count=0;
-        int profit=0;
-        for(int i=0;i<arr.length;i++){
-                int j=arr[i].deadline;
-                while(j>0){
-                    if(result[j]==-1){
-                        result[j]=arr[i].id;
-                        count++;
-                        profit+=arr[i].profit;
-                        break;
-                    }
-                    j--;
+            int j = arr[i].deadline;
+            while(j>0){
+                if(deadline[j]==-1){
+                    deadline[j]=arr[i].id;
+                    rupees+=arr[i].profit;
+                    count++;
+                    break;
                 }
+                j--;
             }
-        int ans[]=new int[2];
-        ans[0]=count;
-        ans[1]=profit;
-        return ans;
+        }
+        return new int[]{count,rupees};
     }
 }
