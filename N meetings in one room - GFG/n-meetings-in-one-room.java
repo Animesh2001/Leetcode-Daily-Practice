@@ -36,40 +36,34 @@ class Solution
 {
     //Function to find the maximum number of meetings that can
     //be performed in a meeting room.
-    
-   public static class Pair implements Comparable<Pair>{
-        int start;
-        int end;
-
-        public Pair(int start,int end){
-            this.start=start;
-            this.end=end;
-        }
+    public static class Pair implements Comparable<Pair>{
+        int start, end;
         
-        //ALERT-------------------------
-        //Compare to function Pair class jaha define kiye usme comparavble implement krke hi banana h
-        public int compareTo(Pair p){
-            return this.end-p.end;
+        public Pair(int start,int end){
+             this.start=start;
+             this.end=end;
+        }
+       
+        public int compareTo(Pair o1){
+            return this.end-o1.end;
         }
     }
-
     
     public static int maxMeetings(int start[], int end[], int n)
     {
         // add your code here
-          Pair arr[]=new Pair[n];
-
+        Pair arr[]=new Pair[n];
         for(int i=0;i<n;i++){
-            Pair p = new Pair(start[i],end[i]);
-            arr[i]=p;
+            Pair pair = new Pair(start[i],end[i]);
+            arr[i]=pair;
         }
-        Arrays.sort(arr,(o1,o2)->(o1.end-o2.end));
-        int j=0;
+        Arrays.sort(arr);
         int count=1;
-        for(int i=1;i<n;i++) {
-            if (arr[j].end <arr[i].start) {
-                j = i;
+        int j=0;
+        for(int i=1;i<arr.length;i++){
+            if(arr[i].start>arr[j].end){
                 count++;
+                j=i;
             }
         }
         return count;
