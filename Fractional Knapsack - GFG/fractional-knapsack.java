@@ -41,6 +41,7 @@ class Item {
 }
 */
 
+
 class Solution
 {
     class itemComparator implements Comparator<Item>
@@ -54,22 +55,23 @@ class Solution
         else return 0; 
     }
 }
+
     //Function to get the maximum total value in the knapsack.
-    double fractionalKnapsack(int capacity, Item arr[], int n) 
+    double fractionalKnapsack(int W, Item arr[], int n) 
     {
         // Your code here
-        Arrays.sort(arr, new itemComparator());
-            
-        double d = 0.0;
-        for(int i=0;i<arr.length&&capacity>0;i++){
-            if(arr[i].weight<=capacity){
-                d+=arr[i].value;
-                capacity-=arr[i].weight;
-            }else{
-                d+=((double)arr[i].value/(double)arr[i].weight)*(double)capacity;
-                capacity=0;
-            }
-        }
-        return d;
+       Arrays.sort(arr,new itemComparator());
+       double d =0.0;
+       int capacity = W;
+       for(int i=0;i<arr.length&&capacity>0;i++){
+           if(arr[i].weight<=capacity){
+            capacity = capacity-arr[i].weight;
+            d+=arr[i].value;
+           }else{
+               d += ((double)arr[i].value/(double)arr[i].weight)*(double)capacity;
+               capacity=0;
+           }
+       }
+       return d;
     }
 }
