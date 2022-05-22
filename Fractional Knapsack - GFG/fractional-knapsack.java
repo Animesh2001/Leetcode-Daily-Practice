@@ -44,15 +44,19 @@ class Item {
 
 class Solution
 {
-    class itemComparator implements Comparator<Item>
-{
-    public int compare(Item a, Item b) 
-    {
-        double r1 = (double)(a.value) / (double)(a.weight); 
-        double r2 = (double)(b.value) / (double)(b.weight); 
-        if(r1 < r2) return 1; 
-        else if(r1 > r2) return -1; 
-        else return 0; 
+    class ItemComparator implements Comparator<Item>{
+   
+    
+    public int compare(Item a,Item b){
+        double r1 = (double)(a.value)/(double)(a.weight);
+        double r2 = (double)(b.value)/(double)(b.weight);
+        if(r1>r2){
+            return -1;
+        }else if(r1<r2){
+            return 1;
+        }else{
+            return 0;
+        }
     }
 }
 
@@ -60,15 +64,15 @@ class Solution
     double fractionalKnapsack(int W, Item arr[], int n) 
     {
         // Your code here
-       Arrays.sort(arr,new itemComparator());
-       double d =0.0;
+       Arrays.sort(arr,new ItemComparator());
+       double d =0;
        int capacity = W;
        for(int i=0;i<arr.length&&capacity>0;i++){
            if(arr[i].weight<=capacity){
             capacity = capacity-arr[i].weight;
             d+=arr[i].value;
            }else{
-               d += ((double)arr[i].value/(double)arr[i].weight)*(double)capacity;
+               d+= ((double)arr[i].value/(double)arr[i].weight)*(double)capacity;
                capacity=0;
            }
        }
