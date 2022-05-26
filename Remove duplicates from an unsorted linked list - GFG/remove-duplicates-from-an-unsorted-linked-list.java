@@ -93,11 +93,11 @@ class Solution
     {
          // Your code here
          if(head==null||head.next==null)return head;
-         HashMap<Integer,Integer>map=new HashMap<>();
+         HashSet<Integer>map=new HashSet<>();
          Node temp = head;
          while(temp!=null){
-             map.put(temp.data,1);
-             while(temp.next!=null&&map.containsKey(temp.next.data)){
+             map.add(temp.data);
+             while(temp.next!=null&&map.contains(temp.next.data)){
                  temp.next=temp.next.next;
              }
              temp=temp.next;
