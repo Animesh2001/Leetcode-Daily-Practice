@@ -80,6 +80,9 @@ class Solution
         Node temp2 = head2;
         
         Node head = null, tail=null;
+        //------------------------------------------
+        //ALERT
+        //Remember how to merge two sorted linkedlist maintain a head and tail and compare accordingly update the tail..
         while(temp1!=null&&temp2!=null){
         if(temp1.data<=temp2.data){
             if(head==null){
