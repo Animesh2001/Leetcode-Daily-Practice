@@ -98,21 +98,40 @@ class Node
 
 class Solution
 {
+    Node reverse(Node temp){
+        Node prev = null;
+        Node curr= temp;
+        Node next = temp.next;
+        while(curr!=null){
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+            if(next!=null){
+                next=next.next;
+            }
+        }
+        return prev;
+    }
+    
     //Function to check whether the list is palindrome.
     boolean isPalindrome(Node head) 
     {
         //Your code here
         if(head==null||head.next==null)return true;
-        
-        Node temp=head;
-        while(temp.next.next!=null){
-            temp=temp.next;
+        Node slow = head, fast = head;
+        while(fast.next!=null&&fast.next.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
         }
-        if(temp.next.data==head.data){
-            temp.next=null;
-            return isPalindrome(head.next);
+        Node temp = slow.next;
+        Node ans = reverse(temp);
+        while(ans!=null&&head!=null){
+            if(ans.data!=head.data){
+                return false;
         }
-        return false;
-    }    
+        head=head.next;
+        ans=ans.next;
+    }  
+    return true;
 }
-
+}
