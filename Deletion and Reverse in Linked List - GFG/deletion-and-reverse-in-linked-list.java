@@ -88,7 +88,10 @@ class GFG
     public static Node reverse(Node head)
     {
         //Add your code here
-        Node prev=head,curr=prev.next,next=curr.next;
+        Node prev = head;
+        Node curr = head.next;
+        Node next = head.next.next;
+        
         while(curr!=head){
             curr.next=prev;
             prev=curr;
