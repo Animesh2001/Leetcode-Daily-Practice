@@ -74,13 +74,13 @@ class GFG
     public static Node deleteNode(Node head,int d)
     {
         //Add your code here.
-        Node slow = head, fast = head.next;
-        while(fast.data!=d&&fast.next!=head){
-            fast=fast.next;
-            slow=slow.next;
-        }
-        if(fast.next!=head){
-            slow.next=fast.next;
+        Node temp = head;
+        while(temp.next!=head){
+            if(temp.next.data==d){
+                temp.next=temp.next.next;
+                break;
+            }
+            temp=temp.next;
         }
         return head;
     }
@@ -88,7 +88,6 @@ class GFG
     public static Node reverse(Node head)
     {
         //Add your code here
-        
         Node prev=head,curr=prev.next,next=curr.next;
         while(curr!=head){
             curr.next=prev;
@@ -98,6 +97,5 @@ class GFG
         }
         curr.next=prev;
         return prev;
-        
     }
 }
