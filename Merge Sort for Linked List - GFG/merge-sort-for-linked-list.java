@@ -73,40 +73,26 @@ class Node
 class Solution
 {
     
-    static Node merge(Node head1,Node head2){
-        if(head2==null)return head1;
-        if(head1==null)return head2;
-        Node temp1 = head1;
-        Node temp2 = head2;
+    static Node merge(Node root,Node fl){
+        Node dummy=new Node(-1);
+        Node head = dummy;
+        Node tail = dummy;
+        Node temp1 = root, temp2 = fl;
         
-        Node head = null, tail=null;
-        //------------------------------------------
-        //ALERT
-        //Remember how to merge two sorted linkedlist maintain a head and tail and compare accordingly update the tail..
         while(temp1!=null&&temp2!=null){
-        if(temp1.data<=temp2.data){
-            if(head==null){
-                head=temp1;
-                tail=temp1;
-            }else{
-                tail.next=temp1;
-                tail=tail.next;
-            }
-            temp1=temp1.next;
-        }else{
-            if(head==null){
-                head=temp2;
-                tail=temp2;
-            }else{
-                tail.next=temp2;
-                tail=tail.next;
-            }
-            temp2=temp2.next;
+             if(temp1.data<temp2.data){
+                 tail.next=temp1;
+                 tail=tail.next;
+                 temp1=temp1.next;
+             }else{
+                 tail.next=temp2;
+                 tail=tail.next;
+                 temp2=temp2.next;
+             }
         }
-        }
-        if(temp2!=null)tail.next=temp2;
         if(temp1!=null)tail.next=temp1;
-        return head;
+        if(temp2!=null)tail.next=temp2;
+        return head.next;
     }
     
     //Function to sort the given linked list using Merge Sort.
