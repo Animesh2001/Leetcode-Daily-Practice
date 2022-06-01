@@ -80,6 +80,8 @@ class Solution
     static Node segregate(Node head)
     {
         // add your code here
+        //ALERT- Remember to use the dummy nodes.. else bhut sari if and else condition hojayegi
+        
         Node zeroHead = new Node(-1);
         Node zeroTail = zeroHead;
         Node oneHead = new Node(-1);
@@ -103,11 +105,14 @@ class Solution
             temp=temp.next;
         }
         twoTail.next=null;
+        
+        //ALERT - Keep check this if else condition
         if(oneHead.next!=null){
             zeroTail.next=oneHead.next;
         }else{
             zeroTail.next=twoHead.next;
         }
+        
         oneTail.next=twoHead.next;
         twoTail.next=null;
         return zeroHead.next;
