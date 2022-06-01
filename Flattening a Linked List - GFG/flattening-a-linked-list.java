@@ -148,7 +148,7 @@ class GfG
 	   if(root==null||root.next==null)return root;
 	   
 	   Node fl = flatten(root.next);
-	   root.next=null;
+	   //root.next=null;
 	   return merge(root,fl);
 	 }
 }
