@@ -65,6 +65,7 @@ class Solution
          int arr1[]=new int[size1];
          int arr2[]=new int[size2];
          
+         //Alert : yaha pe s lena
          int k=s;
          for(int i=0;i<size1;){
              arr1[i++]=arr[k++];
@@ -74,7 +75,7 @@ class Solution
              arr2[j++]=arr[k++];
          }
          
-         int i=0,j=0,index=s;
+         int i=0,j=0,index=s;//Alert yaha pe bhi index s lena
          while(i<arr1.length&&j<arr2.length){
              if(arr1[i]<arr2[j]){
                  arr[index++]=arr1[i++];
