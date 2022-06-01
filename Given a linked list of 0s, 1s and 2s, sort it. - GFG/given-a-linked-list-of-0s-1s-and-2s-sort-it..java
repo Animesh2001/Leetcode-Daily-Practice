@@ -80,44 +80,41 @@ class Solution
     static Node segregate(Node head)
     {
         // add your code here
-        int zero=0,one=0,two=0;
-        
+        Node zeroHead = new Node(-1);
+        Node zeroTail = zeroHead;
+        Node oneHead = new Node(-1);
+        Node oneTail = oneHead;
+        Node twoHead = new Node(-1);
+        Node twoTail = twoHead;
+      
         Node temp=head;
         while(temp!=null){
             if(temp.data==0){
-                zero++;
-            }else if(temp.data==1){
-                one++;
+                zeroTail.next=temp;
+                zeroTail=zeroTail.next;
             }
-            else{
-                two++;
+            else if(temp.data==1){
+                oneTail.next=temp;
+                oneTail=oneTail.next;
+            }else{
+                twoTail.next=temp;
+                twoTail=twoTail.next;
             }
             temp=temp.next;
         }
-        
-        
-        temp=head;
-        
-        
-            while(zero>0){
-                temp.data=0;
-                temp=temp.next;
-                zero--;
-            }
-            while(one>0){
-                temp.data=1;
-                temp=temp.next;
-                one--;
-            }
-            while(two>0){
-                temp.data=2;
-                temp=temp.next;
-                two--;
-            }
-        return head;
-        
-        
+        twoTail.next=null;
+        if(oneHead.next!=null){
+            zeroTail.next=oneHead.next;
+        }else{
+            zeroTail.next=twoHead.next;
+        }
+        oneTail.next=twoHead.next;
+        twoTail.next=null;
+        return zeroHead.next;
     }
+     
+        
+    
 }
 
 
