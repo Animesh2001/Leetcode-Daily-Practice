@@ -19,14 +19,14 @@ class Solution {
         Stack<TreeNode>stack=new Stack<>();
         TreeNode curr = root;
         while(!stack.isEmpty()||curr!=null){
-            if(curr!=null){
+            while(curr!=null){
                 list.add(curr.val);
                 stack.push(curr);
                 curr=curr.left;
-            }else{
+            }
                 TreeNode node = stack.pop();
                 curr=node.right;
-            }
+            
         }
         return list;
     }
