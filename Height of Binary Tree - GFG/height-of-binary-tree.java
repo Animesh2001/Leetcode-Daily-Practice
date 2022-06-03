@@ -123,7 +123,21 @@ class Solution {
     int height(Node node) 
     {
         // code here 
-        if(node==null)return 0;
-        return Math.max(height(node.left),height(node.right))+1;
+       Queue<Node>queue=new LinkedList<>();
+       queue.add(node);
+       queue.add(null);
+       int height=0;
+       while(!queue.isEmpty()){
+           Node front= queue.poll();
+           if(front==null){
+               if(!queue.isEmpty())queue.add(null);
+               height++;
+               continue;
+           }
+           if(front.left!=null)queue.add(front.left);
+           if(front.right!=null)queue.add(front.right);
+           
+       }
+       return height;
     }
 }
