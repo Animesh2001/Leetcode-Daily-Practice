@@ -1,5 +1,5 @@
 # Reverse Level Order Traversal
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given a binary tree of size N, find its reverse level order traversal. ie- the traversal must begin from the last level. </span></p>
 
