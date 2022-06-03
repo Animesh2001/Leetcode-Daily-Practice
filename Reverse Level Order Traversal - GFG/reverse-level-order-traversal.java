@@ -125,6 +125,10 @@ class Node
 
 class Tree
 {
+    
+    //Similar to level order traversal we just needed to add in the queue first right then left
+    //at last reverse the ArrayList to get the final result.
+    
     public ArrayList<Integer> reverseLevelOrder(Node node) 
     {
         // code here
