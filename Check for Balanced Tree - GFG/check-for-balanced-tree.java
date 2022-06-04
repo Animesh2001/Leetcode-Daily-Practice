@@ -141,10 +141,10 @@ class Tree
 	if(root==null)return true;
 	int lh = height(root.left);
 	int rh = height(root.right);
-	if(Math.abs(lh-rh)<=1){
-	    return isBalanced(root.left)&&isBalanced(root.right);
+	if(Math.abs(lh-rh)>1){
+	    return false;
 	}
-	return false;
+	return isBalanced(root.left)&&isBalanced(root.right);
     }
 }
 
