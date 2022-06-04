@@ -20,23 +20,31 @@ class Solution {
         List<List<Integer>>list=new ArrayList<>();
         if(root==null)return list;
         queue.add(root);
+        //maintain a flag
         int flag=0;
+        
         while(!queue.isEmpty()){
             int size = queue.size();
-            List<Integer>list1=new ArrayList<>();
+            List<Integer>sublist=new ArrayList<>();
+            
             for(int i=0;i<size;i++){
                 TreeNode front = queue.poll();
                 if(front.left!=null)queue.add(front.left);
                 if(front.right!=null)queue.add(front.right);
+                //according to flag enter in the sublist
                 if(flag==0){
-                    list1.add(front.val);
+                    sublist.add(front.val);
                 }else{
-                    list1.add(0,front.val);
+                    sublist.add(0,front.val);
                 }
             }
+            
+            //change the flag
             flag= flag==0?1:0;
-            list.add(list1);
+            list.add(sublist);
         }
+        
+        
         return list;
         
     }
