@@ -13,6 +13,20 @@
  *     }
  * }
  */
+
+//first check if leftheight and rightheight are equal return 2^height-1 as it is complete tree
+
+//else separately count the nodes for left subtree + right subtree + 1 for root and return
+
+//also take care of functions left height and right height
+
+// TC is O((logn)^2) ->
+//for traversing the height of tree at any instance will not be more than log(n) Complete Tree
+//at max you will travel for logn nodes
+
+// SC is O(log(n)) ->
+//height of the tree at max can go upto log(n) not more than that as complete tree can't be skew trees.
+
 class Solution {
     
     public int leftheight(TreeNode root){
