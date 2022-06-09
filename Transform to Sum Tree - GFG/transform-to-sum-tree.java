@@ -125,21 +125,20 @@ class Node{
 
 class Solution{
     
-    public int sumofroots(Node root){
-        if(root==null)return 0;
-        return sumofroots(root.left)+sumofroots(root.right)+root.data;
+    public int sum(Node root){
+        if(root==null){
+            return 0;
+        }
+        
+        int left=sum(root.left);
+        int right=sum(root.right);
+        int ans=root.data;
+        root.data=left+right;
+        return root.data+ans;
     }
     
     public void toSumTree(Node root){
          //add code here.
-         if(root==null)return;
-         if(root.left==null&&root.right==null){
-             root.data=0;
-             return;
-         }
-         int sum = sumofroots(root.left)+sumofroots(root.right);
-         root.data=sum;
-         toSumTree(root.left);
-         toSumTree(root.right);
+         sum(root);
     }
 }
