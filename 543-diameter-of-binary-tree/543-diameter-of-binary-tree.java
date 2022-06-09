@@ -15,16 +15,36 @@
  */
 class Solution {
     
-    public int height(TreeNode root)
-    {
-        if(root==null)return 0;
-        return Math.max(height(root.left),height(root.right))+1;
+    public class Pair{
+        int diameter;
+        int height;
+        
+        public Pair(int diameter,int height){
+            this.diameter=diameter;
+            this.height=height;
+        }
     }
+    
+    public Pair diameter(TreeNode root){
+        if(root==null){
+            return new Pair(0,0);
+        }
+        
+        Pair left = diameter(root.left);
+        Pair right = diameter(root.right);
+        int height=Math.max(left.height,right.height)+1;
+        int option1=left.diameter;
+        int option2=right.diameter;
+        
+        int diameter=Math.max((left.height+right.height),Math.max(left.diameter,right.diameter));
+        return new Pair(diameter,height);
+    }
+    
     public int diameterOfBinaryTree(TreeNode root) {
-        if(root==null)return 0;
-        int left=height(root.left);
-        int right = height(root.right);
-        int ans=left+right;
-        return Math.max(diameterOfBinaryTree(root.left),Math.max(diameterOfBinaryTree(root.right),ans));
+      
+        Pair p = diameter(root);
+        return p.diameter;
+        
+        
     }
 }
