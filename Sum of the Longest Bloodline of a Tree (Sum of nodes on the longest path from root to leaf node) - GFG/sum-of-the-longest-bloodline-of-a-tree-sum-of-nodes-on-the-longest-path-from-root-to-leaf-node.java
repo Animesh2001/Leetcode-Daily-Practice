@@ -132,7 +132,7 @@ class Solution{
         Pair option2 = helper(root.right);
         
         if(option1.depth>option2.depth){
-            return new Pair(option1.depth+1,option1.sum+root.data);
+            ans = new Pair(option1.depth+1,option1.sum+root.data);
         }
         if(option2.depth>option1.depth){
             ans = new Pair(option2.depth+1,option2.sum+root.data);
