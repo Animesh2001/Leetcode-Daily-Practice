@@ -73,7 +73,10 @@ class BST {
         
         
         //recursively call for left and right subtree
-        return search(root.left,x)||search(root.right,x);
+        if(root.data>x)
+        return search(root.left,x);
+        else 
+        return search(root.right,x);
         
     }
 }
