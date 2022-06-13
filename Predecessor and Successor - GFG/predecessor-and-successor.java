@@ -121,7 +121,11 @@ class Node
 
 class GfG
 {
-    
+//Brute- Normal inorder lagaoge to TC-O(N) and space to store inorder O(N)
+//Better- inorder nikalte nikalte hi conditions lgakr check pre&suc krlo O(N)
+
+
+//Best(OPTIMISED)- BST ki property ko use kro or uske according find kro
 //TC-O(H);
 //SC-recursion auxilliary space O(N) else O(1);
     
