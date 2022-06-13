@@ -116,45 +116,38 @@ class Node
 // It sets pre and suc as predecessor and successor respectively
 class GfG
 {
-    
-    public static void inorder(Node root,ArrayList<Node>inorderArray){
-        //base condition
-        if(root==null){
-            return;
-        }
-        
-        inorder(root.left,inorderArray);
-        inorderArray.add(root);
-        inorder(root.right,inorderArray);
-        
-    }
-    
     public static void findPreSuc(Node root, Res p, Res s, int key)
     {
        // add your code here
-       
-       ArrayList<Node>inorderArray=new ArrayList<>();
-       inorder(root,inorderArray);
-       
-       Node predecessor=null,successor=null;
-       for(int i=0;i<inorderArray.size();i++)
-       {
-           if(inorderArray.get(i).data==key){
-               if(i+1<inorderArray.size()){
-                   successor=inorderArray.get(i+1);
-               }
-               break;
-           }
-           
-           if(inorderArray.get(i).data>key){
-               successor=inorderArray.get(i);
-               break;
-           }
-           predecessor=inorderArray.get(i);
+       if(root==null){
+           return;
        }
        
-       p.pre=predecessor;
-       s.succ=successor;
+       if(root.data<key){
+           p.pre=root;
+           findPreSuc(root.right,p,s,key);
+       }
+       else if(root.data>key){
+           s.succ=root;
+           findPreSuc(root.left,p,s,key);
+       }else{
+           if(root.left!=null){
+               Node temp=root.left;
+               while(temp.right!=null){
+                   temp=temp.right;
+               }
+               p.pre=temp;
+           }
+           
+           if(root.right!=null){
+               Node temp=root.right;
+               while(temp.left!=null){
+                   temp=temp.left;
+               }
+               s.succ=temp;
+           }
+       }
+       return;
        
        
        
