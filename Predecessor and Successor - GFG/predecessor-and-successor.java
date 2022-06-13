@@ -114,8 +114,17 @@ class Node
 
 // This function finds predecessor and successor of key in BST.
 // It sets pre and suc as predecessor and successor respectively
+
+
+
+
+
 class GfG
 {
+    
+//TC-O(H);
+//SC-recursion auxilliary space O(N) else O(1);
+    
     public static void findPreSuc(Node root, Res p, Res s, int key)
     {
        // add your code here
@@ -124,13 +133,16 @@ class GfG
        }
        
        if(root.data<key){
+           //might this root can be predecessor
            p.pre=root;
            findPreSuc(root.right,p,s,key);
        }
        else if(root.data>key){
+           //might this root can be successor
            s.succ=root;
            findPreSuc(root.left,p,s,key);
        }else{
+           //if root is that key then check this case
            if(root.left!=null){
                Node temp=root.left;
                while(temp.right!=null){
