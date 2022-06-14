@@ -30,6 +30,7 @@ class Solution {
                 }
                 if(temp.right==null){
                     temp.right=curr;
+                    //preorder.add(curr.val);
                     curr=curr.left;
                 }else{
                     temp.right=null;
