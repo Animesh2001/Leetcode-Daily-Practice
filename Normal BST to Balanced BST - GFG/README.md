@@ -1,5 +1,5 @@
 # Normal BST to Balanced BST
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:20px">Given a&nbsp;Binary&nbsp;Search&nbsp;Tree<strong>,</strong> modify the given BST such that itis balanced and has minimum possible height.</span></p>
 
