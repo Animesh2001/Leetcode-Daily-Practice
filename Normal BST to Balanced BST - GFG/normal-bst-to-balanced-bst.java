@@ -161,6 +161,11 @@ class BinarySearchTree
 class GfG
 {
     
+    //BRUTE:- I thought of doing it in O(N*H) and space O(1);
+    
+    //BEST:-Get the inorder array and make a bst out of it using recursion
+    //TC->O(N),SC->O(N)
+    
     void getInorder(Node root,ArrayList<Integer>list){
         if(root==null){
             return;
