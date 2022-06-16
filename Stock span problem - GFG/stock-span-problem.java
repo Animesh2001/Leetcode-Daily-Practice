@@ -40,10 +40,10 @@ class Solution
 {
     public static class Pair{
         int num;
-        int delete;
-        public Pair(int num,int delete){
+        int index;
+        public Pair(int num,int index){
             this.num=num;
-            this.delete=delete;
+            this.index=index;
         }
     }
     
@@ -54,17 +54,16 @@ class Solution
         Stack<Pair>stack=new Stack<>();
         int arr[]=new int[n];
         for(int i=0;i<n;i++){
-            int popped=1;
-            if(stack.isEmpty())arr[i]=popped;
-            else if(stack.peek().num>price[i])arr[i]=popped;
+            if(stack.isEmpty())arr[i]=1;
+            else if(stack.peek().num>price[i])arr[i]=1;
             else if(stack.peek().num<=price[i]){
                 while(!stack.isEmpty()&&stack.peek().num<=price[i]){
-                    popped+=stack.peek().delete;
                     stack.pop();
                 }
-                arr[i]=popped;
+                if(stack.isEmpty())arr[i]=i+1;
+                else arr[i]=i-stack.peek().index;
             }
-            stack.push(new Pair(price[i],popped));
+            stack.push(new Pair(price[i],i));
         }
         return arr;
     }
