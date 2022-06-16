@@ -109,28 +109,32 @@ class Solution
     public static void removeLoop(Node head){
         // code here
         // remove the loop without losing any nodes
-        Node slow = head , fast = head;
+        
+        Node fast=head;
+        Node slow=head;
+        
         while(fast!=null&&fast.next!=null){
             slow=slow.next;
             fast=fast.next.next;
-            if(fast==slow){
-               slow=head;
-               break;
+            if(slow==fast){
+                break;
             }
         }
-        if(fast==null||fast.next==null)return;
+        
         if(slow==fast){
-         while(fast.next!=slow){
-             fast=fast.next;
-         }
+            if(slow==head){
+                while(fast.next!=slow){
+                    fast=fast.next;
+                }
+                fast.next=null;
+            }else{
+                fast=head;
+                while(fast.next!=slow.next){
+                    fast=fast.next;
+                    slow=slow.next;
+                }
+                slow.next=null;
+            }
         }
-        else{
-        while(fast.next!=slow.next){
-            fast=fast.next;
-            slow=slow.next;
-        }
-    }
-        fast.next=null;
-        return;
     }
 }
