@@ -36,7 +36,7 @@ class Solution
                 stack.push(s.charAt(i)-'0');
             }  
         }
-        return stack.size()==1?stack.pop():-1;
+        return stack.pop();
     }
     
 }
