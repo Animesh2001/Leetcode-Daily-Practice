@@ -64,14 +64,18 @@ class Solution {
          int j=0;
          
          for(int i=0;i<arr1.length;i++){
+             //push the elements of arr1 as they come
              s.push(arr1[i]);
              
              
+             //check if stack top is equal to arr2[j] and pop it till its same
              while(!s.isEmpty()&&s.peek()==arr2[j]){
                  s.pop();
                  j++;
              }
          }
+         
+         //at last if something is remaining on the stack then false or else return true
          return s.size()==0?1:0;
     }
 }
