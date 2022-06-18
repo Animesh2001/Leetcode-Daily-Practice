@@ -76,8 +76,7 @@ class Solution {
                  }else{
                      break;
                  }
-                 
-             }
+            }
              i++;
          }
          return s.size()>0?0:1;
