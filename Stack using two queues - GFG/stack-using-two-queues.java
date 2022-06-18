@@ -54,16 +54,16 @@ class Queues
     int pop()
     {
 	    // Your code here
-	    
 	    int ans=-1;
 	    while(q1.size()>1){
 	        q2.add(q1.remove());
 	    }
 	    if(q1.size()==1)ans=q1.remove();
-	    while(!q2.isEmpty()){
-	        q1.add(q2.remove());
-	    }
+	    Queue<Integer>temp=q1;
+	    q1=q2;
+	    q2=temp;
 	    return ans;
+	    
     }
 	
 }
