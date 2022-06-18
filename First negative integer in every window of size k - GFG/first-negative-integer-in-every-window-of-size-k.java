@@ -44,48 +44,49 @@ class GFG {
 
 class Compute {
     
-    public long[] printFirstNegativeInteger(long arr[], int N, int k)
+    public long[] printFirstNegativeInteger(long A[], int n, int k)
     {
-        int i=0,j=k-1,o=0;
-        long ans[]=new long[N-k+1];
-        Deque<Long>deque=new ArrayDeque<>();
-        for(int l=0;l<=j;l++){
-            while(deque.size()>0&&arr[l]<deque.peekLast()){
-                if(deque.peekLast()>0){
-                    deque.pollLast();
-                }else{
-                    break;
-                }
-            }
-            deque.offerLast(arr[l]);
-        }
-        if(deque.peekFirst()<0){
-            ans[o++]=deque.peekFirst();
-        }else{
-            ans[o++]=0;
-        }
-        j++;
-        while(j<arr.length){
-            if(arr[i]==deque.peekFirst()){
-                deque.pollFirst();
-            }
-            i++;
-            while(deque.size()>0&&arr[j]<deque.peekLast()){
-                 if(deque.peekLast()>0){
-                    deque.pollLast();
-                }else{
-                    break;
-                }
-            }
-            deque.offerLast(arr[j]);
-            if(deque.peekFirst()<0){
-            ans[o++]=deque.peekFirst();
-            }else{
-                ans[o++]=0;
-             }
-             j++;  
-        }
-        return ans;
+        Deque<Integer>dq=new ArrayDeque<>();
+        ArrayList<Long>ans=new ArrayList<>();
         
+        //process first window of k size
+        for(int i=0;i<k;i++){
+            if(A[i]<0){
+                dq.addLast(i);
+            }
+        }
+        
+        //store answer of first k size window
+        if(dq.size()>0){
+            ans.add(A[dq.getFirst()]);
+        }else{
+            ans.add((long)0);
+        }
+        
+        //process for remaining windows
+        for(int i=k;i<n;i++){
+            
+            if(!dq.isEmpty()&&i-dq.getFirst()>=k){
+                dq.removeFirst();
+            }
+            
+            //addition
+            if(A[i]<0){
+                dq.addLast(i);
+            }
+            
+            //ans store
+             if(dq.size()>0){
+                ans.add(A[dq.getFirst()]);
+             }else{
+                ans.add((long)0);
+             }
+        }
+        long[] arr=new long[ans.size()];
+        
+        for(int i=0;i<arr.length;i++){
+            arr[i]=ans.get(i);
+        }
+        return arr;
     }
 }
