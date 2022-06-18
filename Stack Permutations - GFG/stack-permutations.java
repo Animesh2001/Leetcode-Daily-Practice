@@ -60,26 +60,19 @@ class GFG {
 class Solution {
     public static int isStackPermutation(int N, int[] arr1, int[] arr2) {
         // code here
-         int i=0;
-         int j=0;
          Stack<Integer>s=new Stack<>();
-         while(i<arr1.length&&j<arr2.length){
-             while(i<arr1.length){
-                 s.push(arr1[i]);
-                 if(arr1[i]==arr2[j])break;
-                 i++;
+         int j=0;
+         
+         for(int i=0;i<arr1.length;i++){
+             s.push(arr1[i]);
+             
+             
+             while(!s.isEmpty()&&s.peek()==arr2[j]){
+                 s.pop();
+                 j++;
              }
-             while(s.size()>0&&j<arr2.length&&i<arr1.length){
-                 if(s.peek()==arr2[j]){
-                     s.pop();
-                     j++;
-                 }else{
-                     break;
-                 }
-            }
-             i++;
          }
-         return s.size()>0?0:1;
+         return s.size()==0?1:0;
     }
 }
         
