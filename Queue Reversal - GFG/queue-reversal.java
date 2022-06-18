@@ -52,13 +52,23 @@ class GfG{
     //Function to reverse the queue.
     public Queue<Integer> rev(Queue<Integer> q){
         //add code here.
-        Stack<Integer>stack=new Stack<>();
-        while(q.size()>0){
-            stack.push(q.remove());
-        }
-        while(stack.size()>0){
-            q.add(stack.pop());
-        }
-        return q;
+       
+       //base case
+       if(q.size()==0||q.size()==1){
+           return q;
+       }
+       
+       //store the front of queue
+       int top_element = q.remove();
+       
+       //recursion will reverse the queue
+       rev(q);
+       
+       //insert the front value at last of reversed queue
+       q.add(top_element);
+       
+       //return the required reversed queue
+       return q;
+       
     }
 }
