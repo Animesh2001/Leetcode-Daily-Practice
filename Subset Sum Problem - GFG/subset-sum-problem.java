@@ -34,39 +34,27 @@ class GFG
 
 class Solution{
 
-static int isSubsetSum(int n, int arr[], int sum,int t[][]){
-            if(sum==0){
-            return 1;
-        }
-        if(n==0&&sum>0){
-            return 0;
-        }
-        if(t[n][sum]!=-1)return t[n][sum];
-        
-        if(arr[n-1]<=sum){
-            if(isSubsetSum(n-1,arr,sum-arr[n-1],t)!=0||isSubsetSum(n-1,arr,sum,t)!=0){
-                return t[n][sum]=1;
-            }else{
-                return t[n][sum]=0;
-            }
-        }else{
-            return t[n][sum]= isSubsetSum(n-1,arr,sum,t);
-        }
-           
-}
 
     static Boolean isSubsetSum(int n, int arr[], int sum){
         // code here
-         int t[][]=new int[n+1][sum+1];
+         boolean t[][]=new boolean[n+1][sum+1];
          for(int i=0;i<n+1;i++){
              for(int j=0;j<sum+1;j++){
-                 t[i][j]=-1;
+                if(i==0)t[i][j]=false;
+                if(j==0)t[i][j]=true;
              }
          }
          
-         return isSubsetSum(n,arr,sum,t)==1?true:false;
-        
-        
-        
+         for(int i=1;i<n+1;i++){
+             for(int j=1;j<sum+1;j++){
+                 if(arr[i-1]<=j){
+                     t[i][j]=t[i-1][j-arr[i-1]]||t[i-1][j];
+                 }else{
+                     t[i][j]=t[i-1][j];
+                 }
+             }
+         }
+         return t[n][sum];
+         
     }
 }
