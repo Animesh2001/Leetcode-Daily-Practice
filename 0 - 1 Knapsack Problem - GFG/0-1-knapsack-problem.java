@@ -47,37 +47,33 @@ class gfg
 
 class Solution 
 { 
+    static int knapSack(int w, int wt[], int val[], int n,int[][]t){ 
+        if(n==0||w==0){
+             return 0;
+         }
+         
+         if(t[n][w]!=-1)return t[n][w];
+         
+         if(wt[n-1]<=w){
+           return t[n][w]= Math.max(val[n-1]+knapSack(w-wt[n-1],wt,val,n-1,t),knapSack(w,wt,val,n-1,t));
+         }
+         else{
+             return t[n][w]= knapSack(w,wt,val,n-1,t);
+         }
+    }
+    
     //Function to return max value that can be put in knapsack of capacity W.
-   static int knapsack(int W,int[] wt,int[] val,int n,int[][] t){
-       if(n==0||W==0){
-           return 0;
-       }
-       if(t[n][W]!=-1){
-           return t[n][W];
-       }
-       
-       if(wt[n-1]<=W){
-           return t[n][W]=Math.max((val[n-1]+knapsack(W-wt[n-1],wt,val,n-1,t)),(knapsack(W,wt,val,n-1,t)));
-       }
-       else {
-           return t[n][W]=knapsack(W,wt,val,n-1,t);
-       }
-       //return t[n][W];
-   }
-   
-    static int knapSack(int W, int wt[], int val[], int n) 
+    static int knapSack(int w, int wt[], int val[], int n) 
     { 
-         // your code here 
-         int t[][]=new int[n+1][W+1];
-         for(int i=0;i<t.length;i++){
-             for(int j=0;j<t[0].length;j++){
+         // your code here
+         
+         int t[][]=new int[n+1][w+1];
+         for(int i=0;i<n+1;i++){
+             for(int j=0;j<w+1;j++){
                  t[i][j]=-1;
              }
          }
-         
-        return knapsack(W,wt,val,n,t);
-         
-         
+         return knapSack(w,wt,val,n,t);
          
     } 
 }
