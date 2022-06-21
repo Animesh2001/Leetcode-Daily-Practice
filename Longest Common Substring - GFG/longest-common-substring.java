@@ -46,7 +46,7 @@ class Solution{
             for(int j=1;j<m+1;j++){
                 if(s1.charAt(i-1)==s2.charAt(j-1)){
                     t[i][j]=1+t[i-1][j-1];
-                     result = Integer.max(result,t[i][j]);
+                     result = Math.max(result,t[i][j]);
                 }else{
                     t[i][j]=0;
                 }
