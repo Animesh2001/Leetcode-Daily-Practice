@@ -30,14 +30,14 @@ class Solution {
     
     public boolean isMatch(String s, String p) {
         
-        int n = s.length();
-        int m = p.length();
+        int m = s.length();
+        int n= p.length();
         
-        int dp[][]=new int[m+1][n+1];
+        int dp[][]=new int[n+1][m+1];
         for(int rows[]:dp){
             Arrays.fill(rows,-1);
         }
         
-        return f(p,s,m,n,dp)==1;
+        return f(p,s,n,m,dp)==1;
     }
 }
