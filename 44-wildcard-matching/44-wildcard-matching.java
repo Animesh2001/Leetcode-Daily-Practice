@@ -11,11 +11,7 @@ class Solution {
         }
         if(dp[i][j]!=-1)return dp[i][j];
         if(s.charAt(i-1)==p.charAt(j-1)||s.charAt(i-1)=='?'){
-            if(f(s,p,i-1,j-1,dp)==1){
-               return dp[i][j]=1;
-            }else{
-               return dp[i][j]=0;
-            }
+           return dp[i][j]= f(s,p,i-1,j-1,dp);
         }
         //ALERT : You need to consider not taking '*' and then taking it.
         //Watch Strivers video once for this step.
