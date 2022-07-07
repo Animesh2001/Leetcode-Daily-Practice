@@ -14,14 +14,25 @@ class Solution {
         return dp[ind][buy]=profit;
     }
     
-    public int maxProfit(int[] prices) {
-        int n = prices.length;
-         int dp[][]=new int[n][2];
+    public int maxProfit(int[] arr) {
+        int n = arr.length;
+        int dp[][]=new int[n+1][2];
+     
+        dp[n][0]=0;
+        dp[n][1]=0;
         
-        for(int rows[]:dp){
-            Arrays.fill(rows,-1);
-        }
+         for(int i=n-1;i>=0;i--){
+             for(int j=0;j<2;j++){
+                 if(j==1){
+                     dp[i][j]=Math.max(-arr[i]+dp[i+1][0],dp[i+1][1]);
+                 }else{
+                     dp[i][j]=Math.max(arr[i]+dp[i+1][1],dp[i+1][0]);
+                 }
+             }
+         }
         
-      return f(0,1,n,prices,dp);
+        return dp[0][1];
+        
+        
     }
 }
