@@ -14,6 +14,8 @@ class Solution {
     }
     
     public int lengthOfLIS(int[] nums) {
+        //tabulation part.
+        //ALERT for tabulation part
         int n=nums.length;
         int dp[][]=new int[n+1][n+1];
       
