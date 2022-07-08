@@ -33,10 +33,5 @@ class Solution {
         }
         Collections.reverse(list);
         return list;
-        
-        
-        
-        
-        
     }
 }
