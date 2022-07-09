@@ -42,8 +42,18 @@ class Solution {
     }
     
     public int longestStrChain(String[] arr) {
-      
+//         if(arr.length>1){
+//        Arrays.sort(arr, new Comparator<String>() {
+ 
+//       @Override
+//       public int compare(final String s1, final String s2) {
+//         return s1.length() < s2.length() ? -1 : 1;
+//       }
+//     });
+//         }   
+        //ALERT The array.sort and comparator funvtion was not running instead this was running . be careful and learn why.
        Arrays.sort(arr, Comparator.comparingInt(String::length));
+
         
         int dp[]=new int[arr.length];
         int n=arr.length;
