@@ -2,27 +2,6 @@ class Solution {
     
     public boolean checkPossible(String str1,String str2){
         if(str1.length()!=1+str2.length())return false;
-//         int i=0,j=0;
-//         int flag=0;
-//         while(i<str1.length()&&j<str2.length()){
-//             if(str1.charAt(i)==str2.charAt(j)){
-//                 i++;
-//                 j++;
-//             }else{
-//                 if(flag==1)return false;
-//                 flag=1;
-//                 i++;
-//             }
-//         }
-//         if(i<str1.length()){
-//             if(flag==0){
-//                 return true;
-//             }else{
-//                 return false;
-//             }
-//         }
-        
-//         return true;
         
         int first = 0;
         int second = 0;
