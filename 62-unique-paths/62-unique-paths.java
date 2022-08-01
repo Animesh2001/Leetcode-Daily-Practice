@@ -34,3 +34,30 @@ class Solution {
        return  uniquePaths(m,n,0,0,matrix);
     }
 }
+
+// class Solution {
+    
+//     public int uniquePaths(int m,int n, int i, int j ){
+//         //base case
+//         if(i==m-1&&j==n-1){
+//             return 1;    
+//         }
+        
+//         if(i>=m||j>=n)return 0;
+        
+//         //recursive calls
+        
+//           int right = uniquePaths(m,n,i,j+1);
+        
+        
+//           int bottom = uniquePaths(m,n,i+1,j);
+        
+        
+//         return right+bottom;
+        
+//     }
+    
+//     public int uniquePaths(int m, int n) {
+//        return  uniquePaths(m,n,0,0);
+//     }
+// }
