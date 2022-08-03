@@ -19,19 +19,27 @@ class Solution {
         }
        
         
-PriorityQueue<Map.Entry<Integer,Integer>>pq=new PriorityQueue<>((a,b)->{return b.getValue()-a.getValue();});
+PriorityQueue<Pair>pq=new PriorityQueue<>((a,b)->{return b.frequency-a.frequency;});
         
+        Pair ans[]=new Pair[map.size()];
+        
+        
+        int m = 0;
         for(Map.Entry<Integer,Integer>entry:map.entrySet()){
-            pq.add(entry);
+            Pair p = new Pair(entry.getKey(),entry.getValue());
+            ans[m++]=p;
         }
-        
-        int ans[]=new int[k];
         
         for(int i=0;i<ans.length;i++){
-            ans[i]=pq.poll().getKey();
+            pq.add(ans[i]);
         }
         
-        return ans;
+        int answer[]=new int[k];
+        for(int i=0;i<answer.length;i++){
+            answer[i]=pq.poll().value;
+        }
+        
+        return answer;
         
         
         
