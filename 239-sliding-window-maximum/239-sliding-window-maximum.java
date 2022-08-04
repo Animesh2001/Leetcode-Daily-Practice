@@ -17,8 +17,10 @@ class Solution {
             
         Pair p =new Pair(nums[i],i);
             
-        while(dq.size()>0&&dq.peekFirst().index<=i-k){
+        if(dq.size()>0){
+            if(dq.peekFirst().index<=i-k){
                 dq.pollFirst();
+        }
         }
         
         
