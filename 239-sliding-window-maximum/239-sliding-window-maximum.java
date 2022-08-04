@@ -1,33 +1,38 @@
 class Solution {
-    
-    class Pair{
+    public class Pair{
         int value;
         int index;
         
-        public Pair(int value,int index){
-            this.value=value;
-            this.index=index;
+        public Pair(int val,int ind){
+            value=val;
+            index=ind;
         }
     }
     
     public int[] maxSlidingWindow(int[] nums, int k) {
-        int arr[]=new int[nums.length-k+1];
-        
-        PriorityQueue<Pair>pq=new PriorityQueue<>((a,b)->{return b.value-a.value;});
-        
-        for(int i=0;i<k;i++){
-            pq.add(new Pair(nums[i],i));
-        }
+        Deque<Pair>dq=new ArrayDeque<Pair>();
+        int ans[]=new int[nums.length-k+1];
         int m=0;
-        arr[m++]=pq.peek().value;
-        
-        for(int j=k;j<nums.length;j++){
-            pq.add(new Pair(nums[j],j));
-            while(pq.peek().index<=j-k){
-                pq.poll();
-            }
-            arr[m++]=pq.peek().value;
+        for(int i=0;i<nums.length;i++){
+            
+        Pair p =new Pair(nums[i],i);
+            
+        while(dq.size()>0&&dq.peekFirst().index<=i-k){
+                dq.pollFirst();
         }
-        return arr;
+        
+        
+        while(dq.size()>0&&dq.peekLast().value<p.value){
+            dq.pollLast();
+        }
+            
+        dq.addLast(p);
+        
+        if(i>=k-1){
+            ans[m++]=dq.peekFirst().value;
+        }
+        }
+        return ans;
+        
     }
 }
