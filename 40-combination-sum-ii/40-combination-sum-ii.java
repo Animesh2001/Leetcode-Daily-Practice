@@ -5,9 +5,6 @@ class Solution {
         if(target==0){
                 ans.add(new ArrayList<>(list));
             }
-        if(start>=n){
-            return;
-        }
         
         for(int i=start;i<n&&arr[i]<=target;i++){
                 if(i==start){
