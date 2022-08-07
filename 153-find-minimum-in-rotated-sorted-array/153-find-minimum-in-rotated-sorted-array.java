@@ -1,29 +1,26 @@
 class Solution {
-   public int findMin(int nums[]){
+    
+    public boolean check_mid(int arr[],int mid){
+        int n=arr.length;
+        if(arr[mid]<=arr[(mid+1)%n]&&arr[mid]<=arr[(n+mid-1)%n]){
+                return true;
+        }
+        return false;
+    }
+    
+    public int findMin(int[] nums) {
         int start = 0;
         int end = nums.length-1;
-       
-       if(nums.length==1){
-           return nums[0];
-       }
-       
-       int ans=0;
-       int min=Integer.MAX_VALUE;
         
         while(start<=end){
             int mid = start+(end-start)/2;
-            if(min>nums[mid]){
-                ans=mid;
-                min=nums[mid];
-            }
-            
-            if(nums[mid]>nums[end]){
+            if(check_mid(nums,mid))return nums[mid];
+            else if(nums[mid]<nums[end]){
+                end=mid-1;
+            }else{
                 start=mid+1;
             }
-            else{
-                end=mid-1;
-            }
         }
-        return nums[ans];
+        return 0;
     }
 }
