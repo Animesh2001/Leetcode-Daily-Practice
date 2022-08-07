@@ -26,6 +26,6 @@ class Solution {
                 }else return nums.length-2;
             }
         }
-        return -1;
+        return 0;
     }
 }
