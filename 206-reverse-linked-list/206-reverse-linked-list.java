@@ -10,16 +10,20 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        if(head==null)return head;
-        ListNode p1=null,p2=head,p3=head.next;
-        while(p2!=null){
-            p2.next=p1;
-            p1=p2;
-            p2=p3;
-            if(p3!=null)
-            p3=p3.next;
-        }
-        head=p1;
+        //recursion
+        //base case
+        if(head==null||head.next==null)return head;
+        
+        
+        //jadu
+        ListNode temp = reverseList(head.next);
+        
+        head.next.next=head;
+        head.next=null;
+        
+        head=temp;
+        
         return head;
+        
     }
 }
