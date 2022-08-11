@@ -1,23 +1,48 @@
-class Solution {
-    public int minPathSum(int[][] grid) {
-        int row = grid.length, col = grid[0].length;
-        int[][] dp = new int[row][col];
-
-        for(int i = 0; i < row; i++) {
-            for(int j = 0; j < col; j++) {
-                if(i == 0 && j == 0) dp[i][j] = grid[i][j];
-                else {
-                    int up = grid[i][j];
-                    up += (i > 0) ? dp[i - 1][j] : (int)(1e9);
-                    
-                    int left = grid[i][j];
-                    left += (j > 0) ? dp[i][j - 1] : (int)(1e9);
-                    
-                    dp[i][j] = Math.min(up, left);
-                }
-            }
-        }
+// class Solution {
+//     public  int minSumPath(int n,int m,int[][] grid,int [][]dp){
+//         if(n==0&&m==0){
+//             return grid[n][m];
+//         }
+//         if(n<0||m<0)return Integer.MAX_VALUE;
+//         if(dp[n][m]!=-1)return dp[n][m];
+//         int up = grid[n][m]+minSumPath(n-1,m,grid,dp);
+//         int left = grid[n][m]+minSumPath(n,m-1,grid,dp);
+//         return dp[n][m]= Math.min(up,left);
+//     }
+    
+//     public int minPathSum(int[][] grid) {
+//         int n = grid.length;
+//         int m = grid[0].length;
+//         int dp[][]=new int[n][m];
+//         for(int rows[]:dp){
+//             Arrays.fill(rows,-1);
+//         }
+//         return minSumPath(n-1,m-1,grid,dp);
+//     }
+// }
+class Solution 
+{
+    static int[][] memo;
+    public int minPathSum(int[][] grid) 
+    {
+        int m = grid.length-1;
+        int n = grid[0].length-1;
         
-        return dp[row - 1][col - 1];
+        memo = new int[m+1][n+1];
+        
+        return find(grid, m, n, memo);
     }
+    public int find(int grid[][], int m, int n, int[][] memo)
+    {
+        if(m==0 && n==0)
+            return grid[0][0];
+        
+        else if(m<0 || n<0)
+            return Integer.MAX_VALUE;
+        
+        else if(memo[m][n]!=0)
+            return memo[m][n];
+        else
+            return memo[m][n] =  grid[m][n] + Math.min(find(grid, m-1, n, memo),find(grid, m, n-1, memo)); 
 }
+    }
