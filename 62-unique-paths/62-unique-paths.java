@@ -25,7 +25,7 @@ class Solution {
     
     public int uniquePaths(int m, int n) {
         
-        int matrix[][]=new int[m+1][n+1];
+        int matrix[][]=new int[m][n];
         
         for(int rows[]:matrix){
             Arrays.fill(rows,-1);
