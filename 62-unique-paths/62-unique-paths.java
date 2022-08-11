@@ -1,63 +1,23 @@
 class Solution {
     
-    public int uniquePaths(int m,int n, int i, int j ,int matrix[][]){
-        //base case
-        if(i==m-1&&j==n-1){
-            return matrix[i][j]= 1;    
+    public int uniquePath(int m,int n,int dp[][]){
+        //condition satisfied
+        if(m==0&&n==0){
+            return 1;
         }
-        
-        if(i>=m||j>=n)return 0;
-        if(matrix[i][j]!=-1)return matrix[i][j];
-        //recursive calls
-        int right =0,bottom=0;
-        
-      
-           right = uniquePaths(m,n,i,j+1,matrix);
-        
-        
-       
-          bottom = uniquePaths(m,n,i+1,j,matrix);
-        
-        
-        return matrix[i][j]=right+bottom;
-        
+        if(m<0||n<0)return 0;
+        if(dp[m][n]!=-1)return dp[m][n];
+        int up = uniquePath(m-1,n,dp);
+        int left = uniquePath(m,n-1,dp);
+        return dp[m][n]=up+left;
     }
     
     public int uniquePaths(int m, int n) {
-        
-        int matrix[][]=new int[m][n];
-        
-        for(int rows[]:matrix){
+        int dp[][]=new int[m][n];
+        for(int []rows:dp){
             Arrays.fill(rows,-1);
         }
+        return uniquePath(m-1,n-1,dp);
         
-       return  uniquePaths(m,n,0,0,matrix);
     }
 }
-
-// class Solution {
-    
-//     public int uniquePaths(int m,int n, int i, int j ){
-//         //base case
-//         if(i==m-1&&j==n-1){
-//             return 1;    
-//         }
-        
-//         if(i>=m||j>=n)return 0;
-        
-//         //recursive calls
-        
-//           int right = uniquePaths(m,n,i,j+1);
-        
-        
-//           int bottom = uniquePaths(m,n,i+1,j);
-        
-        
-//         return right+bottom;
-        
-//     }
-    
-//     public int uniquePaths(int m, int n) {
-//        return  uniquePaths(m,n,0,0);
-//     }
-// }
