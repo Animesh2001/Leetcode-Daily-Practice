@@ -1,43 +1,21 @@
 class Solution {
-    public  int minSumPath(int n,int m,int[][] grid,int [][]dp){
-        if(n<0||m<0)return Integer.MAX_VALUE;
-        if(n==0&&m==0){
-            return grid[n][m];
-        }
-        if(dp[n][m]!=-1)return dp[n][m];
-        
-        
-      
-        int up = minSumPath(n-1,m,grid,dp);
-        int left = minSumPath(n,m-1,grid,dp);
-        return dp[n][m]=grid[n][m]+Math.min(up,left);
+    
+    public int minPathSum(int i,int j,int row,int col,int [][]grid,int [][]dp){
+        if(i==row&&j==col)return grid[i][j];
+        if(i>row||j>col)return Integer.MAX_VALUE;
+        if(dp[i][j]!=-1)return dp[i][j];
+        int down=minPathSum(i+1,j,row,col,grid,dp);
+        int right =minPathSum(i,j+1,row,col,grid,dp);
+        return dp[i][j]= grid[i][j]+Math.min(down,right);
     }
     
     public int minPathSum(int[][] grid) {
-        int n = grid.length;
-        int m = grid[0].length;
-        int dp[][]=new int[n][m];
-        // for(int rows[]:dp){
-        //     Arrays.fill(rows,-1);
-        // }
-        // return minSumPath(n-1,m-1,grid,dp);
-        
-        dp[0][0]=grid[0][0];
-        
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                if(i==0&&j==0)dp[i][j]=grid[i][j];
-                else{
-                    int up = Integer.MAX_VALUE;
-                    int left=Integer.MAX_VALUE;
-                    if(i>0) up = dp[i-1][j];
-                    if(j>0) left = dp[i][j-1];
-                    dp[i][j]=grid[i][j]+Math.min(up,left);
-                }
-            }
+        int row=grid.length-1;
+        int col=grid[0].length-1;
+        int dp[][]=new int[row+1][col+1];
+        for(int rows[]:dp){
+            Arrays.fill(rows,-1);
         }
-        return dp[n-1][m-1];
-        
+        return minPathSum(0,0,row,col,grid,dp);
     }
 }
- 
