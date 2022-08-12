@@ -17,5 +17,15 @@ class Solution {
             Arrays.fill(rows,-1);
         }
         return minPathSum(0,0,row,col,grid,dp);
+        
+        // for(int i=row;i>=0;i--){
+        //     for(int j=col;j>=0;j--){
+        //         if(i==row&&j==col)dp[i][j]=grid[i][j];
+        //         else{
+        //             dp[i][j]= grid[i][j]+Math.min(dp[i+1][j],dp[i][j+1]);
+        //         }
+        //     }
+        // }
+        // return dp[0][0];
     }
 }
