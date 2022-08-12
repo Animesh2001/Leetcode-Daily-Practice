@@ -16,12 +16,32 @@ class Solution {
          int min= Integer.MAX_VALUE;
         int n = matrix.length;
         int dp[][]=new int[n][n];
-        for(int rows[]:dp){
-            Arrays.fill(rows,-1);
+        // for(int rows[]:dp){
+        //     Arrays.fill(rows,-1);
+        // }
+        //  for(int j=0;j<matrix[0].length;j++){
+        //     min=Math.min(min,minFallingPathSum(0,j,matrix.length-1,matrix.length-1,matrix,dp));
+        //  }
+        
+        for(int i=n-1;i>=0;i--){
+            for(int j=0;j<n;j++){
+                
+                if(i==n-1)dp[i][j]=matrix[i][j];
+                else{
+                    int down=Integer.MAX_VALUE,ld=Integer.MAX_VALUE,rd=Integer.MAX_VALUE;
+                    down=dp[i+1][j];
+                    if(j>0) ld=dp[i+1][j-1];
+                    if(j<n-1) rd=dp[i+1][j+1];
+                    
+                    dp[i][j]=matrix[i][j]+Math.min(down,Math.min(ld,rd));
+                }
+                
+            }
         }
-         for(int j=0;j<matrix[0].length;j++){
-            min=Math.min(min,minFallingPathSum(0,j,matrix.length-1,matrix.length-1,matrix,dp));
-         }
+        
+        for(int i=0;i<n;i++){
+            min=Math.min(min,dp[0][i]);
+        }
         return min;
     }
 }
