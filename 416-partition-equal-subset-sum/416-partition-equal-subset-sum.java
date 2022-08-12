@@ -29,8 +29,7 @@ class Solution {
             for(int i=0;i<nums.length;i++){
                 dp[i][0]=true;
             }
-            if(target==nums[0])
-            dp[0][target]=true;
+            if(target==nums[0])dp[0][target]=true;
             for(int i=1;i<nums.length;i++){
                 for(int j=1;j<sum/2+1;j++){
                     if(nums[i]<=j){
