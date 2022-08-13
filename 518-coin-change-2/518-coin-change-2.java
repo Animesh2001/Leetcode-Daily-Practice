@@ -1,32 +1,23 @@
 class Solution {
-    public int change(int amount, int[] coins) {
-        int n=coins.length;
-        
-        int t[][]=new int[n+1][amount+1];
-        
-        //initialize row and columns
-        for(int i=0;i<n+1;i++){
-            for(int j=0;j<amount+1;j++){
-                if(i==0){
-                    t[i][j]=0;
-                }
-                if(j==0){
-                    t[i][j]=1;
+    public int change(int t, int[] arr) {
+            int dp[][]=new int[arr.length][t+1];
+            for(int i=0;i<=t;i++){
+                if(i%arr[0]==0)dp[0][i]=1;
+                else dp[0][i]=0;
+            }
+
+            for(int i=1;i<arr.length;i++){
+                for(int j=0;j<=t;j++){
+                   int pick=0;
+                   if(arr[i]<=j){
+                       pick=dp[i][j-arr[i]];
+                   }
+
+                   int notpick=dp[i-1][j];
+                   dp[i][j]=pick+notpick;
                 }
             }
-        }
-        
-        //calculate for rest of the matrix
-        for(int i=1;i<n+1;i++){
-            for(int j=1;j<amount+1;j++){
-                if(coins[i-1]<=j){
-                    t[i][j]= t[i][j-coins[i-1]]+t[i-1][j];
-                }else{
-                    t[i][j]=t[i-1][j];
-                }
-            }
-        }
-        
-        return t[n][amount];
+
+            return dp[arr.length-1][t];
     }
 }
