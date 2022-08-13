@@ -19,7 +19,7 @@ class Solution {
         for(int rows[]:dp)Arrays.fill(rows,-1);
         
         int ans = minimum(num.length-1,num,x,dp);
-        if(ans>x)return -1;
+        if(ans>=Integer.MAX_VALUE-1)return -1;
         return ans;
     }
 }
