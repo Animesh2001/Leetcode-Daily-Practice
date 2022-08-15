@@ -1,27 +1,28 @@
 class Solution {
     
-    public int f(int ind,int buy,int cap,int []arr,int [][][]dp){
-        if(cap==0)return 0;
-        if(ind==arr.length)return 0;
-        if(dp[ind][buy][cap]!=-1)return dp[ind][buy][cap];
-        int profit=0;
+    public int profit(int ind,int number,int buy,int []prices,int dp[][][]){
+        if(ind==prices.length)return 0;
+        if(number==0)return 0;
+        if(dp[ind][number][buy]!=-1)return dp[ind][number][buy];
+        int maxprofit=0;
         if(buy==1){
-            profit = Math.max(-arr[ind]+f(ind+1,0,cap,arr,dp),f(ind+1,1,cap,arr,dp));
-        }else{
-            profit = Math.max(arr[ind]+f(ind+1,1,cap-1,arr,dp),f(ind+1,0,cap,arr,dp));
+            maxprofit= Math.max(-prices[ind]+profit(ind+1,number,0,prices,dp),0+profit(ind+1,number,1,prices,dp));
         }
-        return dp[ind][buy][cap]=profit;
-    }
+        else{
+            maxprofit= Math.max(+prices[ind]+profit(ind+1,number-1,1,prices,dp),0+profit(ind+1,number,0,prices,dp));
+        }
+        return dp[ind][number][buy]= maxprofit;
+    }    
     
     public int maxProfit(int[] prices) {
-        int dp[][][]=new int[prices.length][2][3];
+        int dp[][][]=new int[prices.length][3][2];
         for(int i=0;i<prices.length;i++){
-            for(int j=0;j<2;j++){
-                for(int k=0;k<3;k++){
+            for(int j=0;j<3;j++){
+                for(int k=0;k<2;k++){
                     dp[i][j][k]=-1;
                 }
             }
         }
-        return f(0,1,2,prices,dp);
+        return profit(0,2,1,prices,dp);
     }
 }
