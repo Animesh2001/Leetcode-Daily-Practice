@@ -1,37 +1,22 @@
 class Solution {
     
-    public int f(int ind,int prev_ind,int []nums,int n,int [][]dp){
-        if(ind==n)return 0;
+    public int lis(int ind,int prev_ind,int nums[],int dp[][]){
+        if(ind==nums.length)return 0;
         if(dp[ind][prev_ind+1]!=-1)return dp[ind][prev_ind+1];
         //not take
-       int len = f(ind+1,prev_ind,nums,n,dp);
+        int nottake=lis(ind+1,prev_ind,nums,dp);
         
-        //take
+        int take=0;
         if(prev_ind==-1||nums[ind]>nums[prev_ind]){
-            len = Math.max(len,1+f(ind+1,ind,nums,n,dp));
+            take= 1+lis(ind+1,ind,nums,dp);
         }
-        return dp[ind][prev_ind+1]=len;
+        return dp[ind][prev_ind+1]= Math.max(nottake,take);
     }
     
-    public int lengthOfLIS(int[] nums) {
-        //tabulation part.
-        //ALERT for tabulation part
-        int n=nums.length;
-        int dp[][]=new int[n+1][n+1];
-      
-        for(int i=n-1;i>=0;i--){
-            for(int j=i-1;j>=-1;j--){
-                 int len = dp[i+1][j+1];
-        
-                 //take
-                    if(j==-1||nums[i]>nums[j]){
-                    len = Math.max(len,1+dp[i+1][i+1]);
-                    }
-                     dp[i][j+1]=len;
-            }
-        }
     
-                                   
-        return dp[0][-1+1];
-}
+    public int lengthOfLIS(int[] nums) {
+        int dp[][]=new int[nums.length+1][nums.length+1];
+        for(int rows[]:dp)Arrays.fill(rows,-1);
+        return lis(0,-1,nums,dp);
+    }
 }
