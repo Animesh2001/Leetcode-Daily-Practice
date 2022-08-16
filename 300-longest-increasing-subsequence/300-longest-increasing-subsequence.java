@@ -1,22 +1,48 @@
 class Solution {
     
-    public int lis(int ind,int prev_ind,int nums[],int dp[][]){
-        if(ind==nums.length)return 0;
-        if(dp[ind][prev_ind+1]!=-1)return dp[ind][prev_ind+1];
-        //not take
-        int nottake=lis(ind+1,prev_ind,nums,dp);
+    public int getIndex(ArrayList<Integer>list,int target){
+        int start=0;
+        int end = list.size()-1;
         
-        int take=0;
-        if(prev_ind==-1||nums[ind]>nums[prev_ind]){
-            take= 1+lis(ind+1,ind,nums,dp);
+        while(start<=end){
+            int mid = start+(end-start)/2;
+            
+            if(list.get(mid)==target){
+                return mid;
+            }
+            else if(list.get(mid)<target){
+                start=mid+1;
+            }
+            else{
+                end=mid-1;
+            }
         }
-        return dp[ind][prev_ind+1]= Math.max(nottake,take);
+        
+        return start;
     }
     
     
     public int lengthOfLIS(int[] nums) {
-        int dp[][]=new int[nums.length+1][nums.length+1];
-        for(int rows[]:dp)Arrays.fill(rows,-1);
-        return lis(0,-1,nums,dp);
+        ArrayList<Integer>list=new ArrayList<>();
+        
+        for(int i=0;i<nums.length;i++){
+            if(list.size()==0){
+                list.add(nums[i]);
+            }
+            else if(list.get(list.size()-1)<=nums[i]){
+                if(list.get(list.size()-1)==nums[i]){
+                    continue;
+                }else{
+                    list.add(nums[i]);
+                }
+            }
+            else{
+                int index = getIndex(list,nums[i]);
+                list.set(index,nums[i]);
+            }
+        }
+        
+        return list.size();
+        
     }
 }
