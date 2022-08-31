@@ -7,9 +7,9 @@ class Solution {
             while(stack.size()>0&&heights[stack.peek()]>=heights[i]){
                 stack.pop();
             }
-            if(stack.size()>0){
+        if(stack.size()>0){
                 nsl[i]=stack.peek();
-            }else{
+             }else{
                 nsl[i]=-1;
             }
             stack.push(i);
