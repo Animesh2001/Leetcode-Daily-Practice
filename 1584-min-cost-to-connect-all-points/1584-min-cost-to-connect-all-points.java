@@ -13,7 +13,7 @@ class Solution {
         boolean visited[]=new boolean[points.length];
         int cost=0;
         int count=0;
-        while(!pq.isEmpty()||count<V-1){
+        while(!pq.isEmpty()&&count<V){
             int arr[]=pq.poll();
             int start = arr[0];
             int end = arr[1];
