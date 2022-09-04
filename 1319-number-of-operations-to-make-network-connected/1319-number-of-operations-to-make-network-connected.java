@@ -1,57 +1,76 @@
 class Solution {
     
-    public int findPar(int child,int []parent){
+    public void union(int sv_parent,int ev_parent,int[]parent,int []rank)
+    {
+        if(rank[sv_parent]<rank[ev_parent]){
+            parent[sv_parent]=ev_parent;
+        }else if(rank[ev_parent]<rank[sv_parent]){
+            parent[ev_parent]=sv_parent;
+        }else{
+            parent[sv_parent]=ev_parent;
+            rank[ev_parent]++;
+        }
+    }
+    
+    public int findPar(int child,int parent[]){
         if(child==parent[child]){
             return child;
         }
-        return parent[child]= findPar(parent[child],parent);
+        
+        //path compression
+        return  parent[child]= findPar(parent[child],parent);
     }
     
-    public void union(int sv,int ev,int parent[],int rank[]){
-        if(rank[sv]<rank[ev]){
-            parent[sv]=ev;
-        }else if(rank[ev]<rank[sv]){
-            parent[ev]=sv;
-        }else{
-            parent[sv]=ev;
-            rank[ev]++;
-        }
-    }
-    
-    public int makeConnected(int n, int[][] connections) {
+    public int findDiscarded(int n,int[][] connections,int []parent){
         int rank[]=new int[n];
         Arrays.fill(rank,0);
-        
-        int parent[]=new int[n];
-        
-        for(int i=0;i<n;i++){
-            parent[i]=i;
-        }
-        int count=0;
-        for(int[]arr:connections){
-            int sv = arr[0];
-            int ev = arr[1];
-            int svp = findPar(sv,parent);
-            int evp = findPar(ev,parent);
-            if(svp!=evp){
-                union(svp,evp,parent,rank);
+        int discarded=0;
+        for(int arr[]:connections){
+            int starting_vertex = arr[0];
+            int ending_vertex = arr[1];
+            int sv_parent = findPar(starting_vertex,parent);
+            int ev_parent = findPar(ending_vertex,parent);
+            
+            //if parents are not same
+            if(sv_parent!=ev_parent){
+                union(sv_parent,ev_parent,parent,rank);
             }else{
-                count++;
+                discarded++;
             }
         }
         
-        int component=0;
-        for(int i=0;i<parent.length;i++){
-            if(parent[i]==i){
-                component++;
+        return discarded;
+    }
+    
+    
+    
+    public int makeConnected(int n, int[][] connections) {
+        
+       
+       
+        int parents[]=new int[n];
+        for(int i=0;i<n;i++){
+            parents[i]=i;
+        }
+        //calculate the no. of wires we had discarded
+        int discarded = findDiscarded(n,connections,parents);
+        
+        int components=0;
+        
+        //count no. of components
+        for(int i=0;i<parents.length;i++){
+            if(parents[i]==i){
+                components++;
             }
         }
         
-        if(count<component-1){
-            return -1;
-        }
+        int required = components-1;
         
-        return component-1;
+        if(discarded<required)return -1;
+        
+        return required;
+        
+        
         
     }
 }
