@@ -5,15 +5,15 @@ class Solution {
     }
     
     public int minCostConnectPoints(int[][] points) {
-        
+        int V = points.length;
         PriorityQueue<int[]>pq=new PriorityQueue<>((a,b)->(a[2]-b[2]));
         
         pq.add(new int[]{0,0,0});
         
         boolean visited[]=new boolean[points.length];
         int cost=0;
-        int count=0;
-        while(!pq.isEmpty()&&count<points.length){
+        int count=V;
+        while(!pq.isEmpty()&&count>0){
             int arr[]=pq.poll();
             int start = arr[0];
             int end = arr[1];
@@ -21,7 +21,7 @@ class Solution {
             if(visited[end])continue;
             visited[end]=true;
             cost+=dist;
-            count++;
+            count--;
             for(int i=0;i<points.length;i++){
                 if(!visited[i]){
                     pq.add(new int[]{end,i,distance(end,i,points)});
