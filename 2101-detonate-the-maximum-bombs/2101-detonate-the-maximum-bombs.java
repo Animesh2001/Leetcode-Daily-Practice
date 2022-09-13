@@ -3,30 +3,24 @@ class Solution {
         int ans = Integer.MIN_VALUE;
         
         for(int i=0;i<bombs.length;i++){
-            
-            ans = Math.max(ans,getBFS(i,bombs));
+            boolean visited[]=new boolean[bombs.length];
+            ans = Math.max(ans,getDFS(i,bombs,visited));
         }
         return ans;   
     }
     
     
-    public int getBFS(int sv,int [][]bombs){
-        boolean visited[]=new boolean[bombs.length];
+    public int getDFS(int sv,int [][]bombs,boolean[]visited){
         visited[sv]=true;
-        Queue<Integer>queue=new LinkedList<>();
-        queue.add(sv);
-        int count=1; //choosed one bomb to detonate
-        while(!queue.isEmpty()){
-            int pop = queue.poll();
-            for(int i=0;i<bombs.length;i++){
-                if(!visited[i]&&isRange(i,pop,bombs)){
-                        count++;
-                    visited[i]=true;
-                    queue.add(i);
-                    
-                }
+        int count = 1;
+        
+        for(int i=0;i<bombs.length;i++){
+            if(!visited[i]&&isRange(i,sv,bombs)){
+             visited[i]=true;
+             count+=getDFS(i,bombs,visited);
             }
         }
+        
         return count;
         
     }
