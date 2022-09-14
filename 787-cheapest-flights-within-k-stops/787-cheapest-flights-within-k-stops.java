@@ -24,7 +24,6 @@ class Solution {
         distance[src]=0;
         
         //construct a queue
-        
        Queue<int[]>queue=new LinkedList<>();
        queue.add(new int[]{src,0});
         int stoppage=0;
