@@ -13,11 +13,7 @@ class Solution {
     }
     
     public int mincostTickets(int ind,int days[],int costs[],int[]dp){
-        //base case
-        // if(ind==days.length-1){
-        //     return costs[0];
-        // }
-        if(ind==days.length){
+        if(ind>=days.length){
             return 0;
         }
         
@@ -31,9 +27,7 @@ class Solution {
         int index_thirty = find(days,30,ind);
         int thirty_day = costs[2]+mincostTickets(index_thirty+1,days,costs,dp);
         
-        return dp[ind]= Math.min(one_day,Math.min(seven_day,thirty_day));
-        
-        
+        return dp[ind]= Math.min(one_day,Math.min(seven_day,thirty_day)); 
     }
     
     
