@@ -36,8 +36,24 @@ class Solution {
     
     
     public int mincostTickets(int[] days, int[] costs) {
-        int dp[]=new int[days.length];
-        Arrays.fill(dp,-1);
-        return mincostTickets(0,days,costs,dp);
+        int dp[]=new int[days.length+1];
+        // Arrays.fill(dp,-1);
+        // return mincostTickets(0,days,costs,dp);
+        
+        for(int i=dp.length-2;i>=0;i--){
+            
+            int one_day = costs[0]+dp[i+1];
+        
+            int index = find(days,7,i);
+            int seven_day = costs[1]+dp[index+1];
+
+            int index_thirty = find(days,30,i);
+            int thirty_day = costs[2]+dp[index_thirty+1];
+
+             dp[i]= Math.min(one_day,Math.min(seven_day,thirty_day)); 
+        }
+        
+        return dp[0];
+        
     }
 }
