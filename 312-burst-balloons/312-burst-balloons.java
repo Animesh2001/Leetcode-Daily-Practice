@@ -29,7 +29,7 @@ class Solution {
         // return maxCoins(1,nums.length,arr,dp);
         
         for(int i=nums.length;i>=1;i--){
-            for(int j=i;j<=nums.length;j++){
+            for(int j=1;j<=nums.length;j++){
                 if(i>j)continue;
                  int maximum = Integer.MIN_VALUE;
                     for(int k = i ; k <= j ; k++)
