@@ -22,7 +22,7 @@ class Solution {
             arr[i+1]=cuts[i];
         }
         Arrays.sort(arr);
-        int dp[][]=new int[arr.length+2][arr.length+2];
+        int dp[][]=new int[arr.length][arr.length];
         // for(int rows[]:dp)Arrays.fill(rows,-1);
         // return minCost(1,cuts.length,arr,dp);
         
