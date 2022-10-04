@@ -1,12 +1,19 @@
 class Solution {
     public int balancedStringSplit(String s) {
-        char ch = s.charAt(0);
-        int count=1,max=0;
-        for(int i=1;i<s.length();i++){
-            if(s.charAt(i)==ch)count++;
-            else count--;
-            if(count==0)max++;
+        int count_l = 0;
+        int count_r = 0;
+        int ans = 0;
+        
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='L'){
+                count_l++;
+            }else{
+                count_r++;
+            }
+            if(count_l==count_r){
+                ans++;
+            }
         }
-        return max;
+        return ans;
     }
 }
