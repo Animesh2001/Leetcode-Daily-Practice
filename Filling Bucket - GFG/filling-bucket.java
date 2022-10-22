@@ -40,8 +40,16 @@ class Solution {
     static int fillingBucket(int N) {
         // code here
        int dp[]=new int[N+1]; //declare dp array
-       Arrays.fill(dp,-1); //memset
-      return akansha(N,dp);
+    //   Arrays.fill(dp,-1); //memset
+    //   return akansha(N,dp);
+    dp[0]=1;
+    for(int i=1;i<=N;i++){
+         int count_one = dp[i-1];
+         int count_two=0;
+         if(i>1)count_two= dp[i-2];
+         dp[i]=(count_one+count_two)%mod;
+    }
+    return dp[N];
      
     }
 };
