@@ -15,19 +15,20 @@
  */
 class Solution {
     
-    
     public static void helper(TreeNode root,List<Integer>temp,List<List<Integer>>list,int sum,int target){
         if(root==null)return;
         
+        temp.add(root.val);
+        
         if(root.left==null&&root.right==null){
-            temp.add(root.val);
             if(sum+root.val==target){
             	list.add(new ArrayList<Integer>(temp));
             }
             return;
         }
         
-        temp.add(root.val);
+        
+        
         if(root.left!=null){
             helper(root.left,temp,list,sum+root.val,target);
             temp.remove(temp.size()-1);
@@ -36,9 +37,8 @@ class Solution {
              helper(root.right,temp,list,sum+root.val,target);
        		 temp.remove(temp.size()-1);
         }
-       
-        
     }
+    
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         List<List<Integer>>list=new ArrayList<>();
         List<Integer>temp=new ArrayList<>();
