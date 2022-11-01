@@ -39,25 +39,9 @@ class Solution
         Stack<Long>stack=new Stack<>();
         
         for(int i=n-1;i>=0;i--){
-            if(stack.isEmpty()){
-                ans[i]=-1;
-            }
-            else if(stack.peek()>arr[i]){
-                ans[i]=stack.peek();
-            }
-            else{
-                while(!stack.isEmpty()){
-                    if(stack.peek()>arr[i]){
-                        break;
-                    }
-                    stack.pop();
-                }
-                if(!stack.isEmpty()){
-                    ans[i]=stack.peek();
-                }else{
-                    ans[i]=-1;
-                }
-            }
+            while(!stack.isEmpty()&&stack.peek()<=arr[i])stack.pop();
+            long nge = stack.isEmpty()?-1:stack.peek();
+            ans[i]=nge;
             stack.push(arr[i]);
         }
         return ans;
