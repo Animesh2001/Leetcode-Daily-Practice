@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.util.*;
@@ -104,7 +104,8 @@ public class GFG2
             
         }
 	}
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 //User function Template for Java
@@ -126,34 +127,35 @@ class GFG
 	ArrayList<Integer> zigZagTraversal(Node root)
 	{
 	    //Add your code here.
-	    ArrayList<Integer>list1=new ArrayList<>();
-	     List<List<Integer>>list=new ArrayList<>();
-        if(root==null)return list1;
-        Queue<Node>queue=new LinkedList<>();
-        queue.add(root);
-         int flag=0;
-        while(!queue.isEmpty()){
-            List<Integer>sublist=new ArrayList<>();
-            int size = queue.size();
-            for(int i=0;i<size;i++){
-           Node dummy = queue.poll();
-            if(dummy.left!=null)queue.add(dummy.left);
-            if(dummy.right!=null)queue.add(dummy.right);
-            if(flag==0){
-               sublist.add(dummy.data); 
-            }else{
-                sublist.add(0,dummy.data);
-            }
-            }
-            list.add(sublist);
-            if(flag==0)flag=1;
-            else flag=0;
-        }
-        for(int i=0;i<list.size();i++){
-            for(int j=0;j<list.get(i).size();j++){
-                list1.add(list.get(i).get(j));
-            }
-        }
-        return list1;
+	    List<List<Integer>>list=new ArrayList<>();
+	    Queue<Node>queue=new LinkedList<>();
+	    queue.add(root);
+	    int flag=0;
+	    ArrayList<Integer>res=new ArrayList<>();
+	    while(!queue.isEmpty()){
+	        int size = queue.size();
+	        List<Integer>newlist=new ArrayList<>();
+	        for(int i=0;i<size;i++){
+	            Node temp = queue.poll();
+	            if(temp.left!=null)queue.add(temp.left);
+	            if(temp.right!=null)queue.add(temp.right);
+	            if(flag==0){
+	                newlist.add(temp.data);
+	            }else{
+	                newlist.add(0,temp.data);
+	            }
+	        }
+	        list.add(newlist);
+	        flag= flag==0?1:0;
+	    }
+	    
+	    for(List<Integer>i:list){
+	        for(int j:i){
+	            res.add(j);
+	        }
+	    }
+	    
+	    return res;
+	    
 	}
 }
