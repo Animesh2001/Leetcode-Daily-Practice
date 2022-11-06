@@ -50,14 +50,11 @@ class Solution {
             if(temp1.val==temp2.val){
                 if(temp1.index<temp2.index){
                     cost+=temp1.val;
-                    // System.out.println(temp1.val);
                     pq1.remove();
-                    // if(i<j)
                     pq1.add(new Pair(costs[i],i));
                     i++;
                 }else{
                     cost+=temp2.val;
-                     // System.out.println(temp2.val);
                     pq2.remove();
                     pq2.add(new Pair(costs[j],j));
                     j--;
@@ -66,18 +63,13 @@ class Solution {
             
             else if(temp1.val<temp2.val){
                     cost+=temp1.val;
-                    // System.out.println(temp1.val);
                     pq1.remove();
-                    
-                    // if(i<j)
                     pq1.add(new Pair(costs[i],i));
                 i++;
             }
             else{
                     cost+=temp2.val;
-                    // System.out.println(temp2.val);
                     pq2.remove();
-                    // if(i<j)
                     pq2.add(new Pair(costs[j],j));
                 j--;
             }
@@ -91,18 +83,12 @@ class Solution {
 
             while(count<k){
                 cost+=pq1.peek().val;
-                // System.out.println(pq1.peek().val);
                 pq1.remove();
                 count++;
             }
         }
         
         
-        return cost;
-        
-        
-         
-        
-         
+        return cost;  
     }
 }
