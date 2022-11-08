@@ -38,10 +38,13 @@ class Solution{
     public static boolean isPowerofTwo(long n){
         
         // Your code here
-        if(n==0)return false;
-        long ans = (n & (n-1));
-        
-        return ans==0?true:false;
+        int count = 0;
+        while(n!=0){
+            long rmsb = (n & -n);
+            n = n-rmsb;
+            count++;
+        }
+        return count==1;
     }
     
 }
