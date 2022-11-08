@@ -1,17 +1,19 @@
 class Solution {
     
     public String makeGood(String s) {
-        StringBuilder str = new StringBuilder(s);
-        int i = 0;
-        while(i<str.length()-1){
-            if(Math.abs(str.charAt(i)-str.charAt(i+1))==32){
-                    str.deleteCharAt(i);
-                    str.deleteCharAt(i);
-                    i=0;
-                    continue;
+        Stack<Character>stack=new Stack<>();
+        stack.push(s.charAt(s.length()-1));
+        for(int i=s.length()-2;i>=0;i--){
+            if(!stack.isEmpty()&&Math.abs(stack.peek()-s.charAt(i))==32){
+                stack.pop();
+            }else{
+                stack.push(s.charAt(i));
             }
-            i++;
         }
-        return str.toString();
+        String str="";
+        while(!stack.isEmpty()){
+            str+=stack.pop();
+        }
+        return str;
     }
 }
