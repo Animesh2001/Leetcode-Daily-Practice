@@ -1,9 +1,9 @@
 class Solution {
     
     public String makeGood(String s) {
+        //First create a stack to store the characters
         Stack<Character>stack=new Stack<>();
-        stack.push(s.charAt(s.length()-1));
-        for(int i=s.length()-2;i>=0;i--){
+        for(int i=s.length()-1;i>=0;i--){
             if(!stack.isEmpty()&&Math.abs(stack.peek()-s.charAt(i))==32){
                 stack.pop();
             }else{
@@ -16,4 +16,5 @@ class Solution {
         }
         return str;
     }
+    
 }
