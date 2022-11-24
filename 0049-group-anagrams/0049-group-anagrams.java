@@ -18,13 +18,7 @@ class Solution {
             }
         }
         
-        List<List<String>>res=new ArrayList<>();
-        
-        for(List<String>list:map.values()){
-            res.add(list);
-        }
-        
-        return res;
+        return new ArrayList<>(map.values());
         
         
         
