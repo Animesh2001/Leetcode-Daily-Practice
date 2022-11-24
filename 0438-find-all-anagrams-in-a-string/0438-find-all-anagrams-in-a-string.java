@@ -2,7 +2,7 @@ class Solution {
 
     public boolean compare(HashMap<Character, Integer> smap, HashMap<Character, Integer> pmap) {
         for (char sch : smap.keySet()) {
-            if (!pmap.getOrDefault(sch, 0).equals(smap.get(sch))) {
+            if ((int)pmap.getOrDefault(sch, 0)!=(int)smap.get(sch)) {
                 return false;
             }
         }
