@@ -30,7 +30,7 @@ class Solution
         for(int i=0;i<n;i++){
             sum+=arr[i];
             
-            int rem = (int)(sum % (long)k);
+            int rem = (int)(sum % k);
             
             if(rem<0)rem+=k;
             
