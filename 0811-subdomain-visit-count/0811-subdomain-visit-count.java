@@ -19,7 +19,6 @@ class Solution {
             } else {
                 map.put(remainingdomainName, num);
             }
-
             for (int i = 0; i < remainingdomainName.length(); i++) {
                 if (remainingdomainName.charAt(i) == '.') {
                     String check = remainingdomainName.substring(i + 1, remainingdomainName.length());
@@ -32,16 +31,15 @@ class Solution {
             }
         }
 
-        List<String> list = new ArrayList<>();
+        List<String> res = new ArrayList<>();
 
         for (String s : map.keySet()) {
-            String str = "";
-            str += map.get(s);
-            str = str + " ";
-            str = str + s;
-            list.add(str);
+            StringBuilder sb = new StringBuilder();
+            sb.append(map.get(s));
+            sb.append(" ");
+            sb.append(s);
+            res.add(sb.toString());
         }
-        return list;
+        return res;
     }
 }
-//900 google.mail.com
