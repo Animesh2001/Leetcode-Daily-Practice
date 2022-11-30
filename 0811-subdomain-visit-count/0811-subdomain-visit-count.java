@@ -31,14 +31,14 @@ class Solution {
                 }
             }
         }
-        
-        List<String>list=new ArrayList<>();
-        
-        for(String s : map.keySet()){
+
+        List<String> list = new ArrayList<>();
+
+        for (String s : map.keySet()) {
             String str = "";
-            str+=map.get(s);
-            str=str+" ";
-            str = str+s;
+            str += map.get(s);
+            str = str + " ";
+            str = str + s;
             list.add(str);
         }
         return list;
