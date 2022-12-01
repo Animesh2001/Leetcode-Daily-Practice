@@ -23,8 +23,6 @@ class FreqStack {
 
     public int pop() {
         int elem = psm.get(max_freq).removeFirst();
-        // int elem = stack.peek();
-        // stack.pop();
         fm.put(elem, fm.get(elem) - 1);
         if (psm.get(max_freq).isEmpty()) {
             psm.remove(max_freq);
