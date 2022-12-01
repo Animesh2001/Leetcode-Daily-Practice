@@ -1,5 +1,5 @@
 class FreqStack {
-    Map<Integer, LinkedList<Integer>> psm;
+    Map<Integer, Stack<Integer>> psm;
     Map<Integer, Integer> fm;
     int max_freq = 0;
 
@@ -13,16 +13,13 @@ class FreqStack {
         max_freq = Math.max(max_freq, fm.get(val));
         int cf = fm.get(val);
         if (!psm.containsKey(cf)) {
-            LinkedList<Integer> stack = new LinkedList<>();
-            stack.addFirst(val);
-            psm.put(cf, stack);
-        } else {
-            psm.get(cf).addFirst(val);
+            psm.put(cf, new Stack<>());
         }
+        psm.get(cf).push(val);
     }
 
     public int pop() {
-        int elem = psm.get(max_freq).removeFirst();
+        int elem = psm.get(max_freq).pop();
         fm.put(elem, fm.get(elem) - 1);
         if (psm.get(max_freq).isEmpty()) {
             psm.remove(max_freq);
