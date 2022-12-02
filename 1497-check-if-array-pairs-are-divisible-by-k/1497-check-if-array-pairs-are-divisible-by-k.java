@@ -10,7 +10,7 @@ class Solution {
         }
         
         for(int num:map.keySet()){
-            if(num==0||2*num==k){
+            if(num==0){
                 if(map.get(num)%2!=0) return false;
             }else{
                 if(!map.get(num).equals(map.getOrDefault(k-num,0)))return false;
