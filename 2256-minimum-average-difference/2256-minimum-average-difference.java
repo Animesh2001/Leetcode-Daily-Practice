@@ -9,7 +9,7 @@ class Solution {
 
         for (int i = 0; i < n; i++) {
             prev_sum += nums[i];
-            int avg = (int)(prev_sum / (i + 1));
+            int avg = (int) (prev_sum / (i + 1));
             prev_avg[i] = avg;
         }
 
@@ -17,7 +17,7 @@ class Solution {
 
         for (int i = n - 1; i >= 0; i--) {
             next_sum += nums[i];
-            int avg = (int)(next_sum / (long)(n - i));
+            int avg = (int) (next_sum / (n - i));
             next_avg[i] = avg;
         }
 
