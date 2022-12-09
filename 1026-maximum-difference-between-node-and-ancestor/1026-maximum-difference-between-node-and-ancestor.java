@@ -27,7 +27,7 @@ class Solution {
         list.add(root.val);
         f(list, root.left);
         f(list, root.right);
-        list.remove(Integer.valueOf(root.val));
+        list.remove(list.size() - 1);
     }
 
     public int maxAncestorDiff(TreeNode root) {
