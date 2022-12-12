@@ -35,31 +35,24 @@ class GFG {
 class Solution {
     // Function to detect cycle in an undirected graph.
     
-    public boolean checkCycle (int sv, ArrayList<ArrayList<Integer>>adj, int[]visited){
-         Queue<int []> queue= new LinkedList<>();
-        queue.add(new int[]{sv,-1});
-        visited[sv]=1;
-        
-        while(!queue.isEmpty()){
-            int arr[] = queue.poll();
-            
-            for(int adjacent  : adj.get(arr[0])){
-                if(visited[adjacent]==0){
-                    queue.add(new int[]{adjacent,arr[0]});
-                    visited[adjacent]=1;
-                }else if(adjacent != arr[1]){
-                    return true;
-                }
-            }
-        }
-        return false;
+    public boolean checkCycle (int sv, int pv, ArrayList<ArrayList<Integer>>adj, int[]visited){
+         visited[sv]=1;
+         for(int elem : adj.get(sv)){
+             if(visited[elem]==0){
+                 if(checkCycle(elem,sv,adj,visited))return true;
+             }else if(elem!=pv){
+                 return true;
+             }
+         }
+         
+         return false;
     }
     
     public boolean helper (int V, ArrayList<ArrayList<Integer>>adj){
         int [] visited = new int [adj.size()];
         for(int i=0 ; i<adj.size(); i++){
             if(visited[i]==0){
-                if(checkCycle(i,adj,visited))return true;
+                if(checkCycle(i,-1,adj,visited))return true;
             }
         }
         
