@@ -1,36 +1,34 @@
 class Solution {
-
-    public int minFallingPathSum(int i, int j, int row, int col, int[][] matrix, int[][] dp) {
-        if (j < 0 || i > row || j > col) return Integer.MAX_VALUE;
-        if (i == row) return matrix[i][j];
-        if (dp[i][j] != -1) return dp[i][j];
-        int down = minFallingPathSum(i + 1, j, row, col, matrix, dp);
-        int ld = minFallingPathSum(i + 1, j - 1, row, col, matrix, dp);
-        int rd = minFallingPathSum(i + 1, j + 1, row, col, matrix, dp);
-        return dp[i][j] = matrix[i][j] + Math.min(down, Math.min(ld, rd));
-    }
-
-    public int minFallingPathSum(int[][] matrix) {
-        int min = Integer.MAX_VALUE;
+    
+    public int find_min(int row, int col, int matrix[][],int dp[][]){
         int n = matrix.length;
-        int dp[][] = new int[n][n];
-
-        for (int i = n - 1; i >= 0; i--) {
-            for (int j = 0; j < n; j++) {
-                if (i == n - 1) dp[i][j] = matrix[i][j]; else {
-                    int down = Integer.MAX_VALUE, ld = Integer.MAX_VALUE, rd = Integer.MAX_VALUE;
-                    down = dp[i + 1][j];
-                    if (j > 0) ld = dp[i + 1][j - 1];
-                    if (j < n - 1) rd = dp[i + 1][j + 1];
-
-                    dp[i][j] = matrix[i][j] + Math.min(down, Math.min(ld, rd));
-                }
-            }
+        if( row>=n || col>=n || col<0 )return Integer.MAX_VALUE;
+        
+        if(row == n-1){
+            return matrix[row][col];
         }
-
-        for (int i = 0; i < n; i++) {
-            min = Math.min(min, dp[0][i]);
+        
+        if(dp[row][col]!=-1)return dp[row][col];
+        
+        int left_diagonal =  find_min(row+1, col-1, matrix,dp);
+        int right_diagonal =  find_min(row+1, col+1, matrix,dp);
+        int down =  find_min(row+1, col, matrix,dp);
+        
+        return dp[row][col] = matrix[row][col] + Math.min(left_diagonal , Math.min(right_diagonal,down));
+    }
+    
+    public int minFallingPathSum(int[][] matrix) {
+        int ans = Integer.MAX_VALUE;
+        int dp[][] = new int[matrix.length][matrix.length];
+        
+        for(int rows[] : dp){
+            Arrays.fill(rows,-1);
         }
-        return min;
+        
+        for(int i=0; i<matrix[0].length; i++){
+            ans = Math.min(ans,find_min(0, i, matrix,dp));
+        }
+        
+        return ans;
     }
 }
