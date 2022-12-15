@@ -1,14 +1,17 @@
 class Solution {
 
     public boolean isBipartite(int sv, int visited[], int graph[][]) {
-        if (visited[sv] == -1) visited[sv] = 0;
-        for (int ngb : graph[sv]) {
-            if (visited[ngb] == -1) {
-                visited[ngb] = visited[sv] == 1 ? 0 : 1;
-                if (!isBipartite(ngb, visited, graph)) return false;
-            } else {
-                if (visited[sv] == visited[ngb]) {
-                    return false;
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(sv);
+        visited[sv] = 0;
+        while (!queue.isEmpty()) {
+            int pop = queue.poll();
+            for (int i : graph[pop]) {
+                if (visited[i] == -1) {
+                    visited[i] = visited[pop] == 1 ? 0 : 1;
+                    queue.add(i);
+                } else {
+                    if (visited[i] == visited[pop]) return false;
                 }
             }
         }
