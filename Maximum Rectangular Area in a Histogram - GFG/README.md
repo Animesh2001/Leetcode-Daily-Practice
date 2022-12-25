@@ -1,7 +1,6 @@
 # Maximum Rectangular Area in a Histogram
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Find the largest rectangular area possible in a given histogram where the largest rectangle can be made of a number of contiguous bars. For simplicity, assume that all bars have the same width and the width is<strong> 1 unit</strong>, there will be <strong>N</strong> bars height of each bar will be given by the array <strong>arr</strong>.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Find the largest rectangular area possible in a given histogram where the largest rectangle can be made of a number of contiguous bars. For simplicity, assume that all bars have the same width and the width is<strong> 1 unit</strong>, there will be <strong>N</strong> bars height of each bar will be given by the array <strong>arr</strong>.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -10,7 +9,7 @@
 arr[] = {6,2,5,4,5,1,6</span><span style="font-size:18px">}
 <strong>Output: </strong>12<strong>
 Explanation: 
-</strong></span><img alt="" src="http://d1hyf4ir1gqw6c.cloudfront.net/wp-content/uploads/histogram1.png" class="img-responsive"><span style="font-size:18px">
+</strong></span><img alt="" src="http://d1hyf4ir1gqw6c.cloudfront.net/wp-content/uploads/histogram1.png"><span style="font-size:18px">
 </span>
 </pre>
 
@@ -34,5 +33,4 @@ The task is to complete the function&nbsp;<strong>getMaxArea</strong>() which ta
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
 1 ≤ N ≤ 10<sup>6</sup><br>
 1 ≤ arr[i] ≤ 10<sup>12</sup></span></p>
- <p></p>
-            </div>
+</div>
