@@ -38,34 +38,23 @@ class gfg
 
 class Solution
 {
-    public static class Pair{
-        int num;
-        int index;
-        public Pair(int num,int index){
-            this.num=num;
-            this.index=index;
-        }
-    }
-    
     //Function to calculate the span of stockâ€™s price for all n days.
     public static int[] calculateSpan(int price[], int n)
     {
         // Your code here
-        Stack<Pair>stack=new Stack<>();
-        int arr[]=new int[n];
-        for(int i=0;i<n;i++){
-            if(stack.isEmpty())arr[i]=1;
-            else if(stack.peek().num>price[i])arr[i]=1;
-            else if(stack.peek().num<=price[i]){
-                while(!stack.isEmpty()&&stack.peek().num<=price[i]){
-                    stack.pop();
-                }
-                if(stack.isEmpty())arr[i]=i+1;
-                else arr[i]=i-stack.peek().index;
+        int ngl[] = new int[n];
+        Stack<Integer> st = new Stack<>();
+        
+        for(int i=0; i<n; i++){
+            while(!st.isEmpty()&&price[st.peek()]<=price[i]){
+                st.pop();
             }
-            stack.push(new Pair(price[i],i));
+            if(st.isEmpty()) ngl[i] = i+1;
+            else ngl[i] = i-st.peek();
+            st.push(i);
         }
-        return arr;
+        
+        return ngl;
     }
     
 }
