@@ -1,7 +1,6 @@
 # Stock span problem
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">The stock span problem is a financial problem where we have a series of <strong>n</strong> daily price quotes for a stock and we need to calculate the span of stocks price for all <strong>n</strong> days.&nbsp;<br>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">The stock span problem is a financial problem where we have a series of <strong>n</strong> daily price quotes for a stock and we need to calculate the span of stocks price for all <strong>n</strong> days.&nbsp;<br>
 The span <strong>S<sub>i</sub></strong> of the stocks price on a given day <strong>i</strong> is defined as the maximum number of consecutive days just before the given day, for which the price of the stock on the current day is less than or equal to its price on the given day.<br>
 For example, if an array of 7 days prices is given as {100, 80, 60, 70, 60, 75, 85}, then the span values for corresponding 7 days are {1, 1, 1, 2, 1, 4, 6}.</span></p>
 
@@ -43,6 +42,5 @@ The task is to complete the function&nbsp;<strong>calculateSpan</strong>() which
 1 ≤ N ≤ 10<sup>5</sup><br>
 1 ≤ C[i] ≤ 10<sup>5</sup></span></p>
 
-<p><span style="font-size:18px"><img alt="" src="https://contribute.geeksforgeeks.org/wp-content/uploads/Stock_span.png" class="img-responsive"></span></p>
- <p></p>
-            </div>
+<p><span style="font-size:18px"><img alt="" src="https://contribute.geeksforgeeks.org/wp-content/uploads/Stock_span.png"></span></p>
+</div>
