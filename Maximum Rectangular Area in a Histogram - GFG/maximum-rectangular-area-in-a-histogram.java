@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.util.*;
 import java.lang.*;
 import java.io.*;
@@ -21,66 +21,53 @@ class GFG {
 
 
 
+
 // } Driver Code Ends
 
 
 class Solution
 {
-    
-    public static class Pair{
-        long num;
-        int index;
-        public Pair(long num,int index){
-            this.num=num;
-            this.index=index;
+    public static long[] getnsr(long hist[], long n){
+        long nsr[] = new long[hist.length];
+        Stack<Integer>st = new Stack<>();
+        for(int i = hist.length-1; i>=0; i--){
+            while(!st.isEmpty()&&hist[st.peek()]>=hist[i]){
+                st.pop();
+            }
+            nsr[i]= (st.isEmpty())?hist.length:st.peek();
+            st.push(i);
         }
+        return nsr;
+    }
+    
+    public static long[] getnsl(long hist[], long n){
+        long[] nsl = new long[hist.length];
+        Stack<Integer>st = new Stack<>();
+        for(int i=0; i<hist.length; i++){
+            while(!st.isEmpty()&&hist[st.peek()]>=hist[i]){
+                st.pop();
+            }
+            if(st.isEmpty()) nsl[i]=-1;
+            else nsl[i] = st.peek();
+            st.push(i);
+        }
+        return nsl;
     }
     
     //Function to find largest rectangular area possible in a given histogram.
     public static long getMaxArea(long hist[], long n) 
     {
         // your code here
-        Stack<Pair>stack=new Stack<>();
-        int nsr[]=new int[hist.length];
-        int nsl[]=new int[hist.length];
-        int k=0;
+        long nsl[] = getnsl(hist,n);
+        long nsr[] = getnsr(hist,n);
         
-        for(int i=hist.length-1;i>=0;i--){
-            if(stack.isEmpty())nsr[i]=hist.length;
-            else if(stack.peek().num<hist[i])nsr[i]=stack.peek().index;
-            else if(stack.peek().num>=hist[i]){
-                while(!stack.isEmpty()&&stack.peek().num>=hist[i]){
-                    stack.pop();
-                }
-                if(stack.isEmpty())nsr[i]=hist.length;
-                else nsr[i]=stack.peek().index;
-            }
-            stack.push(new Pair(hist[i],i));
+        long max = Integer.MIN_VALUE;
+        for(int i=0; i<hist.length; i++){
+            long ans = (nsr[i]-nsl[i]-1)*hist[i];
+            max = Math.max(ans,max);
         }
-       // Collections.reverse(nsr);
+        return max;
         
-        stack=new Stack<>();
-        for(int i=0;i<hist.length;i++){
-            if(stack.isEmpty())nsl[i]=-1;
-            else if(stack.peek().num<hist[i])nsl[i]=stack.peek().index;
-            else if(stack.peek().num>=hist[i]){
-                while(!stack.isEmpty()&&stack.peek().num>=hist[i]){
-                    stack.pop();
-                }
-                if(stack.isEmpty())nsl[i]=-1;
-                else nsl[i]=stack.peek().index;
-            }
-            stack.push(new Pair(hist[i],i));
-        }
-        long ans=Long.MIN_VALUE;
-        long width[]=new long[hist.length];
-        for(int i=0;i<hist.length;i++){
-            width[i]=(long)(nsr[i]-nsl[i])-1;
-        }
-        for(int i=0;i<hist.length;i++){
-            ans=Math.max(ans,hist[i]*width[i]);
-        }
-        return ans;
     }
         
 }
