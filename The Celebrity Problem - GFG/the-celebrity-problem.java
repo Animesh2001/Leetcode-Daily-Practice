@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.io.*;
@@ -23,7 +23,8 @@ class GFG{
             t--;
         }
     } 
-} // } Driver Code Ends
+} 
+// } Driver Code Ends
 
 
 //User function Template for Java
@@ -31,54 +32,40 @@ class GFG{
 
 class Solution
 { 
+    boolean knows(int f, int s, int mat[][]){
+        return mat[f][s]==1;
+    }
+    
     //Function to find if there is a celebrity in the party or not.
     int celebrity(int M[][], int n)
     {
     	// code here 
-    	Stack<Integer>stack=new Stack<>();
-    	int number_of_celebrities = M.length;
-    	for(int i=0;i<number_of_celebrities;i++){
+    	Stack<Integer>stack = new Stack<>();
+    	
+    	for(int i =0; i<n; i++){
     	    stack.push(i);
     	}
     	
     	while(stack.size()>1){
-    	int celebrity1 = stack.pop();
-    	int celebrity2 = stack.pop();
-    	    if(M[celebrity1][celebrity2]==0){
-    	        stack.push(celebrity1);
+    	    int f = stack.pop();
+    	    int s = stack.pop();
+    	    
+    	    if(knows(f,s,M))stack.push(s);
+    	    else stack.push(f);
+    	}
+    	
+    	int c = stack.pop();
+    	
+    	for(int i =0; i<n; i++){
+    	    if(M[c][i]!=0){
+    	        return -1;
     	    }
-    	    else {
-    	        stack.push(celebrity2);
+    	    if(M[i][c]!=1&&i!=c){
+    	        return -1;
     	    }
     	}
     	
-         if(stack.size()==1){
-             int candidate=stack.pop();
-             boolean rowCheck=false;
-             boolean colCheck=false;
-             int zeroCount=0;
-             int oneCount=0;
-             for(int i=0;i<n;i++){
-                 if(M[candidate][i]==0){
-                     zeroCount++;
-                 }
-             }
-             if(zeroCount==n){
-                 rowCheck=true;
-             }
-             
-             for(int i=0;i<n;i++){
-                 if(M[i][candidate]==1){
-                     oneCount++;
-                 }
-             }
-             if(oneCount==n-1){
-                 colCheck=true;
-             }
-             if(rowCheck==true&&colCheck==true){
-                 return candidate;
-             }
-         }
-         return -1;
+    	return c;
+    	
     }
 }
