@@ -1,7 +1,6 @@
 # Implement two stacks in an array
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Your task is to implement&nbsp;&nbsp;2 stacks in one array efficiently.</span></p>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Your task is to implement&nbsp;&nbsp;2 stacks in one array efficiently.</span></p>
 
 <p>&nbsp;</p>
 
@@ -42,7 +41,6 @@ pop2()&nbsp;  the stack2 is now empty hence -1 .</span></pre>
 
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
 1 &lt;=<strong> </strong>Number of queries &lt;= 100<br>
-1 &lt;= value in the stack&nbsp;&lt;= 100</span><br>
+1 &lt;= Number&nbsp;of elements in the stack</span><span style="font-size:18px">&nbsp;&lt;= 100</span><br>
 <span style="font-size:18px">The sum of elements in both the stacks &lt; size of the given array</span></p>
- <p></p>
-            </div>
+</div>
