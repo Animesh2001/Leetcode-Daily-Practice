@@ -14,16 +14,9 @@ class Solution {
     public boolean isstrvalid(String str, HashMap<Character, Integer> letter, HashMap<Character, Integer> container) {
         HashMap<Character, Integer> map = new HashMap<>();
         for (char ch : str.toCharArray()) {
-            if (letter.containsKey(ch)) {
-                map.put(ch, map.getOrDefault(ch, 0) + 1);
-                if (letter.get(ch) >= map.get(ch)) {
-                    continue;
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+            if (!letter.containsKey(ch)) return false;
+            if (map.get(ch) > letter.get(ch)) return false;
         }
         for (char ch : map.keySet()) {
             if (container.containsKey(ch) && map.get(ch) + container.get(ch) > letter.get(ch)) {
