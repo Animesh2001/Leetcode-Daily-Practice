@@ -3,7 +3,7 @@ class Solution {
 
     public int countArrangement(int n) {
         int arr[] = new int[n + 1];
-        f(1, n+1, arr);
+        f(1, n + 1, arr);
         return count;
     }
 
