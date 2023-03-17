@@ -5,5 +5,4 @@ FROM
     Person p
 LEFT JOIN
     Address a
-ON
-    p.personID = a.personID;
+USING (personID);
