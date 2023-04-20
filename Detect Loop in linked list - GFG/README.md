@@ -1,7 +1,6 @@
 # Detect Loop in linked list
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a linked list of <strong>N</strong> nodes. The task is to check if the&nbsp;linked list has a loop. Linked list can contain&nbsp;self loop.</span></p>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a linked list of <strong>N</strong> nodes. The task is to check if the&nbsp;linked list has a loop. Linked list can contain&nbsp;self loop.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -30,7 +29,7 @@ the&nbsp;Linked list does not contains
 any loop.</span></pre>
 
 <p><span style="font-size:18px"><strong>Your Task:</strong><br>
-The task is to complete the function <strong>detectloop</strong>() which contains reference to the head as only argument. This function should return <strong>true</strong>&nbsp;if linked list contains loop, else return <strong>false</strong>.</span></p>
+The task is to complete the function <strong>detectloop</strong>() which contains reference to the head as only argument.&nbsp; This function should return <strong>true</strong>&nbsp;if linked list contains loop, else return <strong>false</strong>.</span></p>
 
 <p><span style="font-size:18px"><strong>Expected Time Complexity:</strong>&nbsp;O(N)<br>
 <strong>Expected Auxiliary Space:</strong>&nbsp;O(1)</span></p>
@@ -38,5 +37,4 @@ The task is to complete the function <strong>detectloop</strong>() which contain
 <p><span style="font-size:18px"><strong>Constraints:</strong></span><br>
 <span style="font-size:18px">1 ≤ N ≤ 10<sup>4</sup><br>
 1 ≤ Data on Node ≤ 10<sup>3</sup></span></p>
- <p></p>
-            </div>
+</div>
