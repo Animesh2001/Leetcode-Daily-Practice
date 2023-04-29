@@ -37,5 +37,5 @@ This is a <strong>function </strong>problem. You only need to complete the funct
 
 <p><span style="font-size:18px"><strong>Constraints:</strong><br>
 1 ≤ N ≤&nbsp;10<sup>6</sup><br>
-1 ≤&nbsp;A<sub>i</sub> ≤&nbsp;10<sup>18</sup></span></p>
+0 ≤&nbsp;A<sub>i</sub> ≤&nbsp;10<sup>18</sup></span></p>
 </div>
