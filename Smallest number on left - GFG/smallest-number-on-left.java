@@ -32,20 +32,22 @@ class Solution{
     static List<Integer> leftSmaller(int n, int a[])
     {
         //code here
-        Stack<Integer>st = new Stack<>();
-        List<Integer>list = new ArrayList<Integer>();
-        for(int i=0 ; i<a.length; i++){
-            while(!st.isEmpty()&&st.peek()>=a[i]){
-                st.pop();
-            }
-            if(st.isEmpty()){
-                list.add(-1);
-            }else{
-                list.add(st.peek());
-            }
-            st.push(a[i]);
-        }
-        return list;
         
+        Stack<Integer>stack = new Stack<>();
+        List<Integer> list = new ArrayList<>();
+        for(int i=0; i<n; i++){
+            while(!stack.isEmpty()&&stack.peek()>=a[i]){
+                stack.pop();
+            }
+            if(stack.isEmpty()){
+                list.add(-1);
+            }
+            else{
+                list.add(stack.peek());
+            }
+            stack.push(a[i]);
+        }
+        
+        return list;
     }
 }
