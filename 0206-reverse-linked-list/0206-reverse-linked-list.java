@@ -11,7 +11,13 @@
 class Solution {
     public ListNode reverseList(ListNode head) {
         //base case
-        if(head == null || head.next==null)return head;
+        if(head == null) {
+            return head;
+        }
+        
+        if(head.next==null){
+            return head;
+        }
         
         //recursion call
         ListNode rev = reverseList(head.next);
